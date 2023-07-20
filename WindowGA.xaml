@@ -10,10 +10,12 @@
     <Grid>
         <TextBlock x:Name="XMLFilePath" HorizontalAlignment="Left" Margin="400,22,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="247"><Run Language="pl-pl" Text="No XML File"/></TextBlock>
         <Button x:Name="Search" Content="Przegladaj" HorizontalAlignment="Left" Margin="680,20,0,0" VerticalAlignment="Top" Width="84" Click="ButtonSearch_Click"/>
-        <TextBox x:Name="CompanyName" HorizontalAlignment="Left" Margin="94,93,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="CompanyName" HorizontalAlignment="Left" Margin="90,93,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
         <TextBlock HorizontalAlignment="Left" Margin="10,93,0,0" TextWrapping="Wrap" VerticalAlignment="Top"><Run Language="pl-pl" Text="Nazwa Firmy"/></TextBlock>
-        <Button Content="Wczytaj Dane" HorizontalAlignment="Left" Margin="44,40,0,0" VerticalAlignment="Top" Click="ButtonLoadInfo_Click"/>
+        <Button Content="Wczytaj Dane" HorizontalAlignment="Left" Margin="44,25,0,0" VerticalAlignment="Top" Click="ButtonLoadInfo_Click"/>
         <TextBlock HorizontalAlignment="Left" Margin="253,93,0,0" TextWrapping="Wrap" VerticalAlignment="Top"><Run Language="pl-pl" Text="NIP"/></TextBlock>
         <TextBox x:Name="TaxpayerID" HorizontalAlignment="Left" Margin="305,93,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="ClientID" HorizontalAlignment="Left" Margin="102,60,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="44"/>
+        <TextBlock HorizontalAlignment="Left" Margin="18,60,0,0" TextWrapping="Wrap" VerticalAlignment="Top"><Run Language="pl-pl" Text="ID Klienta"/></TextBlock>
     </Grid>
 </Window>

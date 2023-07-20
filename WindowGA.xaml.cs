@@ -60,6 +60,7 @@ namespace GHNMiddle
                 //String name = noder.InnerXml;
                 foreach (XmlNode xn in noder)
                 {
+                    ClientID.Text = xn["commercial_client_id"].InnerText;
                     CompanyName.Text = xn["name"].InnerText;
                     TaxpayerID.Text = xn["nip"].InnerText;
 

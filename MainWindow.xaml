@@ -11,7 +11,7 @@
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
         <Button x:Name="Button_GA" Content="General&#xD;&#xA;Aviation" HorizontalAlignment="Left" Click="ButtonGA_Click" Margin="39,102,0,0" VerticalAlignment="Top" Height="170" Width="168"/>
-        <Button x:Name="Button_CA" Content="Commertial&#xD;&#xA;Aviation" HorizontalAlignment="Left" Click="ButtonCA_Click" Margin="377,102,0,0" VerticalAlignment="Top" Height="170" Width="168" IsEnabled="False"/>
+        <Button x:Name="Button_CA" Content="Commertial&#xD;&#xA;Aviation" HorizontalAlignment="Left" Click="ButtonCA_Click" Margin="371,102,0,0" VerticalAlignment="Top" Height="170" Width="168" IsEnabled="False"/>
 
     </Grid>
 </Window>
