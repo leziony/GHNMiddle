@@ -62,7 +62,8 @@ namespace GHNMiddle
                     CompanyName.Text = xn["name"].InnerText;
                     TaxpayerID.Text = xn["nip"].InnerText;
                     Street.Text = xn["street"].InnerText;
-
+                    HouseNr.Text = xn["house_number"].InnerText;
+                    FlatNr.Text = xn["flat_number"].InnerText;
 
                 }
             }

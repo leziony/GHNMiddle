@@ -19,5 +19,9 @@
         <TextBlock HorizontalAlignment="Left" Margin="18,60,0,0" TextWrapping="Wrap" VerticalAlignment="Top"><Run Language="pl-pl" Text="ID Klienta"/></TextBlock>
         <TextBlock HorizontalAlignment="Left" Margin="460,93,0,0" TextWrapping="Wrap" VerticalAlignment="Top"><Run Language="pl-pl" Text="Ulica"/></TextBlock>
         <TextBox x:Name="Street" HorizontalAlignment="Left" Margin="509,93,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="HouseNr" HorizontalAlignment="Left" Margin="644,93,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="26"/>
+        <TextBlock HorizontalAlignment="Left" Margin="632,69,0,0" TextWrapping="Wrap" VerticalAlignment="Top"><Run Text="Nr "/><Run Language="pl-pl" Text="Domu"/></TextBlock>
+        <TextBox x:Name="FlatNr" HorizontalAlignment="Left" Margin="722,93,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="22"/>
+        <TextBlock HorizontalAlignment="Left" Margin="700,69,0,0" TextWrapping="Wrap" VerticalAlignment="Top"><Run Language="pl-pl" Text="Nr Mieszkania"/></TextBlock>
     </Grid>
 </Window>
