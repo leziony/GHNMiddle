@@ -17,5 +17,7 @@
         <TextBox x:Name="TaxpayerID" HorizontalAlignment="Left" Margin="305,93,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
         <TextBox x:Name="ClientID" HorizontalAlignment="Left" Margin="102,60,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="44"/>
         <TextBlock HorizontalAlignment="Left" Margin="18,60,0,0" TextWrapping="Wrap" VerticalAlignment="Top"><Run Language="pl-pl" Text="ID Klienta"/></TextBlock>
+        <TextBlock HorizontalAlignment="Left" Margin="460,93,0,0" TextWrapping="Wrap" VerticalAlignment="Top"><Run Language="pl-pl" Text="Ulica"/></TextBlock>
+        <TextBox x:Name="Street" HorizontalAlignment="Left" Margin="509,93,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
     </Grid>
 </Window>

@@ -55,17 +55,16 @@ namespace GHNMiddle
                 XmlDocument xmlDoc = new XmlDocument();
                 xmlDoc.Load(filename);
                 XmlNamespaceManager nsmgr = new XmlNamespaceManager(xmlDoc.NameTable);
-                //XmlNode noder = xmlDoc.SelectSingleNode("/inflot_export_total/commercial_client/name", nsmgr);
                 XmlNodeList noder = xmlDoc.SelectNodes("/inflot_export_total/commercial_client", nsmgr);
-                //String name = noder.InnerXml;
                 foreach (XmlNode xn in noder)
                 {
                     ClientID.Text = xn["commercial_client_id"].InnerText;
                     CompanyName.Text = xn["name"].InnerText;
                     TaxpayerID.Text = xn["nip"].InnerText;
+                    Street.Text = xn["street"].InnerText;
+
 
                 }
-                //CompanyName.Text = Cname;
             }
         }
     }
