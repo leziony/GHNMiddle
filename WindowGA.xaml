@@ -8,8 +8,7 @@
         Closing="WindowGA_Closing"
         Title="WindowGA" Height="450" Width="800">
     <Grid>
-        <TextBlock HorizontalAlignment="Left" Margin="462,15,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Width="240"/>
-        <Button Content="Przeglądaj" Margin="726,10,10,398" Click="Button_Click"/>
-
+        <TextBlock x:Name="XMLFilePath" HorizontalAlignment="Left" Margin="400,22,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Width="247"/>
+        <Button x:Name="Search" Content="Button" HorizontalAlignment="Left" Margin="680,20,0,0" VerticalAlignment="Top" Width="84" Click="ButtonSearch_Click"/>
     </Grid>
 </Window>
