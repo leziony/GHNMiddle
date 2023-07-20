@@ -29,7 +29,6 @@ namespace GHNMiddle
         {
             WindowGA GA = new WindowGA(); 
             GA.Show();
-            MessageBox.Show("test", "Your Text", MessageBoxButton.OK, MessageBoxImage.Information);
             this.Hide();
         }
 

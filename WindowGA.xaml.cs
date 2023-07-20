@@ -12,6 +12,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using System.Xml;
 
 namespace GHNMiddle
 {
@@ -20,6 +21,7 @@ namespace GHNMiddle
     /// </summary>
     public partial class WindowGA : Window
     {
+        Boolean fileAdded = false;
         public WindowGA()
         {
             InitializeComponent();
@@ -37,6 +39,25 @@ namespace GHNMiddle
             if(ofd.ShowDialog() == true )
             {
                 XMLFilePath.Text = ofd.FileName;
+                fileAdded=true;
+            }
+        }
+
+        private void ButtonLoadInfo_Click(object sender, RoutedEventArgs e)
+        {
+            if (fileAdded == false)
+            {
+                MessageBox.Show("No file was added!", "Error!", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+            else
+            {
+                String filename = XMLFilePath.Text;
+                XmlDocument xmlDoc = new XmlDocument();
+                xmlDoc.Load(filename);
+                XmlNamespaceManager nsmgr = new XmlNamespaceManager(xmlDoc.NameTable);
+                XmlNode noder = xmlDoc.SelectSingleNode("/inflot_export_total/commercial_client/name[1]", nsmgr);
+                String name = noder.InnerXml;
+                CompanyName.Text = name;
             }
         }
     }
