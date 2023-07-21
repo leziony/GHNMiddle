@@ -52,6 +52,24 @@ namespace GHNMiddle
             InitializeComponent();
             TableInit();
         }
+        public void CostCalc()
+        {
+            if (fileAdded == false)
+            {
+                MessageBox.Show("No file was added!", "Error!", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+            decimal suma = 0;
+            foreach (DataRow row in Tab.Rows)
+            {
+                suma += (decimal)row["Cena"];
+            }
+            if(Decimal.Parse(Discount.Text) != 0)
+            {
+                suma = suma * ((100-Decimal.Parse(Discount.Text)) / 100);
+            }
+            suma = Math.Round(suma,2);
+            Cost.Text = suma.ToString();
+        }
         private void WindowGA_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
             Application.Current.MainWindow.Show();
@@ -128,16 +146,15 @@ namespace GHNMiddle
         }
         private void ButtonCost_Click(object sender, RoutedEventArgs e)
         {
-            if (fileAdded == false)
+            CostCalc();
+        }
+
+        private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if (fileAdded != false)
             {
-                MessageBox.Show("No file was added!", "Error!", MessageBoxButton.OK, MessageBoxImage.Error);
+                CostCalc();
             }
-            decimal suma = 0;
-            foreach (DataRow row in Tab.Rows)
-            {
-                suma += (decimal)row["Cena"];
-            }
-            Cost.Text = suma.ToString();
         }
     }
 }
