@@ -121,23 +121,19 @@ namespace GHNMiddle
                     row["Taryfa"] = noder.ChildNodes[0].InnerText;
                     row["Ilosc"] = int.Parse(noder.ChildNodes[1].InnerText);
                     row["Jednostka"] = noder.ChildNodes[2].InnerText;
-                    row["Cena"] = 100.50;
+                    row["Cena"] = 102.50;
                     Tab.Rows.Add(row);
                 }
             }
         }
         private void ButtonCost_Click(object sender, RoutedEventArgs e)
         {
-            if (fileAdded == false)
-            {
-                MessageBox.Show("No file was added!", "Error!", MessageBoxButton.OK, MessageBoxImage.Error);
-            }
-            decimal sum = 0;
+            decimal suma = 0;
             foreach (DataRow row in Tab.Rows)
             {
                 sum += (decimal)row["Cena"];
             }
-            Cost.Text = sum.ToString();
+            Cost.Text = suma.ToString();
         }
     }
 }
