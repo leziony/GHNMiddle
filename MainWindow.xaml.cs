@@ -34,7 +34,7 @@ namespace GHNMiddle
 
         private void ButtonCA_Click(object sender, RoutedEventArgs e)
         {
-            //to be done after GA is finished
+            //to be done soon
         }
     }
 }
