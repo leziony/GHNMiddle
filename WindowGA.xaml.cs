@@ -26,9 +26,9 @@ namespace GHNMiddle
         System.Data.DataTable Tab = new DataTable();
         DataColumn column;
         DataRow row;
-        public WindowGA()
+
+        public void TableInit()
         {
-            InitializeComponent();
             column = new DataColumn();
             column.DataType = System.Type.GetType("System.String");
             column.ColumnName = "Taryfa";
@@ -41,8 +41,17 @@ namespace GHNMiddle
             column.DataType = System.Type.GetType("System.String");
             column.ColumnName = "Jednostka";
             Tab.Columns.Add(column);
+            column = new DataColumn();
+            column.DataType = System.Type.GetType("System.Decimal");
+            column.ColumnName = "Cena";
+            Tab.Columns.Add(column);
+            Table.DataContext = Tab;
         }
-
+        public WindowGA()
+        {
+            InitializeComponent();
+            TableInit();
+        }
         private void WindowGA_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
             Application.Current.MainWindow.Show();
@@ -91,13 +100,24 @@ namespace GHNMiddle
 
         private void ButtonLoadTarrif_Click(object sender, RoutedEventArgs e)
         {
-            row = Tab.NewRow();
-            row["Taryfa"] = "test";
-            row["Ilosc"] = 4;
-            row["Jednostka"] = "MTOW";
-            Tab.Rows.Add(row);
-            Table.DataContext = Tab;
+            Tab.Rows.Clear();
+            if (fileAdded == false)
+            {
+                MessageBox.Show("No file was added!", "Error!", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+            else
+            {
+                String filename = XMLFilePath.Text;
+                XmlDocument xmlDoc = new XmlDocument();
+                xmlDoc.Load(filename);
+                XmlNamespaceManager nsmgr = new XmlNamespaceManager(xmlDoc.NameTable);
+                XmlNodeList noder = xmlDoc.SelectNodes("/inflot_export_total/services_total_list/services_list//service", nsmgr);
+                int count = noder.Count;
+                MessageBox.Show(count.ToString());
 
+
+
+            }
         }
     }
 }
