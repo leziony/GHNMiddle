@@ -125,5 +125,14 @@ namespace GHNMiddle
                 }
             }
         }
+        private void ButtonCost_Click(object sender, RoutedEventArgs e)
+        {
+            decimal sum = 0;
+            foreach (DataRow row in Tab.Rows)
+            {
+                sum += (decimal)row["Cena"];
+            }
+            Cost.Text = sum.ToString();
+        }
     }
 }
