@@ -128,10 +128,14 @@ namespace GHNMiddle
         }
         private void ButtonCost_Click(object sender, RoutedEventArgs e)
         {
+            if (fileAdded == false)
+            {
+                MessageBox.Show("No file was added!", "Error!", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
             decimal suma = 0;
             foreach (DataRow row in Tab.Rows)
             {
-                sum += (decimal)row["Cena"];
+                suma += (decimal)row["Cena"];
             }
             Cost.Text = suma.ToString();
         }
