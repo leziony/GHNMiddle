@@ -12,7 +12,7 @@
         <Button x:Name="Search" Content="Przegladaj" HorizontalAlignment="Left" Margin="680,20,0,0" VerticalAlignment="Top" Width="84" Click="ButtonSearch_Click"/>
         <TextBox x:Name="CompanyName" HorizontalAlignment="Left" Margin="90,93,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
         <TextBlock HorizontalAlignment="Left" Margin="10,93,0,0" TextWrapping="Wrap" VerticalAlignment="Top"><Run Language="pl-pl" Text="Nazwa Firmy"/></TextBlock>
-        <Button Content="Wczytaj Dane" HorizontalAlignment="Left" Margin="44,25,0,0" VerticalAlignment="Top" Click="ButtonLoadInfo_Click"/>
+        <Button Content="Wczytaj Dane Klienta" HorizontalAlignment="Left" Margin="44,25,0,0" VerticalAlignment="Top" Click="ButtonLoadInfo_Click" Width="120"/>
         <TextBlock HorizontalAlignment="Left" Margin="253,93,0,0" TextWrapping="Wrap" VerticalAlignment="Top"><Run Language="pl-pl" Text="NIP"/></TextBlock>
         <TextBox x:Name="TaxpayerID" HorizontalAlignment="Left" Margin="305,93,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
         <TextBox x:Name="ClientID" HorizontalAlignment="Left" Margin="102,60,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="44"/>
@@ -31,5 +31,8 @@
         <TextBlock HorizontalAlignment="Left" Margin="463,118,0,0" TextWrapping="Wrap" VerticalAlignment="Top"><Run Language="pl-pl" Text="Kraj"/></TextBlock>
         <TextBox x:Name="CountryCode" HorizontalAlignment="Left" Margin="684,123,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="22"/>
         <TextBlock HorizontalAlignment="Left" Margin="668,141,0,0" TextWrapping="Wrap" VerticalAlignment="Top"><Run Language="pl-pl" Text="Kod Kraju"/></TextBlock>
+        <GridSplitter HorizontalAlignment="Center" Height="0" VerticalAlignment="Center" Width="800"/>
+        <DataGrid x:Name="Table" Margin="0,217,10,0" ItemsSource="{Binding}"/>
+        <Button Content="Wczytaj taryfy" HorizontalAlignment="Left" Margin="43,175,0,0" VerticalAlignment="Top" Click="ButtonLoadTarrif_Click"/>
     </Grid>
 </Window>

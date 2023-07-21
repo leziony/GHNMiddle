@@ -1,6 +1,7 @@
 ﻿using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -22,9 +23,24 @@ namespace GHNMiddle
     public partial class WindowGA : Window
     {
         Boolean fileAdded = false;
+        System.Data.DataTable Tab = new DataTable();
+        DataColumn column;
+        DataRow row;
         public WindowGA()
         {
             InitializeComponent();
+            column = new DataColumn();
+            column.DataType = System.Type.GetType("System.String");
+            column.ColumnName = "Taryfa";
+            Tab.Columns.Add(column);
+            column = new DataColumn();
+            column.DataType = System.Type.GetType("System.Int32");
+            column.ColumnName = "Ilosc";
+            Tab.Columns.Add(column);
+            column = new DataColumn();
+            column.DataType = System.Type.GetType("System.String");
+            column.ColumnName = "Jednostka";
+            Tab.Columns.Add(column);
         }
 
         private void WindowGA_Closing(object sender, System.ComponentModel.CancelEventArgs e)
@@ -36,10 +52,10 @@ namespace GHNMiddle
         {
             OpenFileDialog ofd = new OpenFileDialog();
             ofd.Filter = "XML (*.xml)|*.xml|All files(*.*)|*.*";
-            if(ofd.ShowDialog() == true )
+            if (ofd.ShowDialog() == true)
             {
                 XMLFilePath.Text = ofd.FileName;
-                fileAdded=true;
+                fileAdded = true;
             }
         }
 
@@ -71,6 +87,17 @@ namespace GHNMiddle
 
                 }
             }
+        }
+
+        private void ButtonLoadTarrif_Click(object sender, RoutedEventArgs e)
+        {
+            row = Tab.NewRow();
+            row["Taryfa"] = "test";
+            row["Ilosc"] = 4;
+            row["Jednostka"] = "MTOW";
+            Tab.Rows.Add(row);
+            Table.DataContext = Tab;
+
         }
     }
 }
