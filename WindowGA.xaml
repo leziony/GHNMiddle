@@ -23,5 +23,13 @@
         <TextBlock HorizontalAlignment="Left" Margin="632,69,0,0" TextWrapping="Wrap" VerticalAlignment="Top"><Run Text="Nr "/><Run Language="pl-pl" Text="Domu"/></TextBlock>
         <TextBox x:Name="FlatNr" HorizontalAlignment="Left" Margin="722,93,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="22"/>
         <TextBlock HorizontalAlignment="Left" Margin="700,69,0,0" TextWrapping="Wrap" VerticalAlignment="Top"><Run Language="pl-pl" Text="Nr Mieszkania"/></TextBlock>
+        <TextBox x:Name="PostalCode" HorizontalAlignment="Left" Margin="120,119,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="44"/>
+        <TextBlock HorizontalAlignment="Left" Margin="10,119,0,0" TextWrapping="Wrap" VerticalAlignment="Top"><Run Language="pl-pl" Text="Kod Pocztowy"/></TextBlock>
+        <TextBlock HorizontalAlignment="Left" Margin="244,119,0,0" TextWrapping="Wrap" VerticalAlignment="Top"><Run Language="pl-pl" Text="Miasto"/></TextBlock>
+        <TextBox x:Name="City" HorizontalAlignment="Left" Margin="305,118,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="Country" HorizontalAlignment="Left" Margin="509,118,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
+        <TextBlock HorizontalAlignment="Left" Margin="463,118,0,0" TextWrapping="Wrap" VerticalAlignment="Top"><Run Language="pl-pl" Text="Kraj"/></TextBlock>
+        <TextBox x:Name="CountryCode" HorizontalAlignment="Left" Margin="684,123,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="22"/>
+        <TextBlock HorizontalAlignment="Left" Margin="668,141,0,0" TextWrapping="Wrap" VerticalAlignment="Top"><Run Language="pl-pl" Text="Kod Kraju"/></TextBlock>
     </Grid>
 </Window>
