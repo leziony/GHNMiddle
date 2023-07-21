@@ -111,12 +111,18 @@ namespace GHNMiddle
                 XmlDocument xmlDoc = new XmlDocument();
                 xmlDoc.Load(filename);
                 XmlNamespaceManager nsmgr = new XmlNamespaceManager(xmlDoc.NameTable);
-                XmlNodeList noder = xmlDoc.SelectNodes("/inflot_export_total/services_total_list/services_list//service", nsmgr);
-                int count = noder.Count;
-                MessageBox.Show(count.ToString());
-
-
-
+                XmlNodeList noderc = xmlDoc.SelectNodes("/inflot_export_total/services_total_list/services_list//service", nsmgr);
+                int count = noderc.Count;
+                for (int i = 1; i <= count; i++)
+                {
+                    XmlNode noder = xmlDoc.SelectSingleNode("/inflot_export_total/services_total_list/services_list/service[" + i.ToString() + "]", nsmgr);
+                    row = Tab.NewRow();
+                    row["Taryfa"] = noder.ChildNodes[0].InnerText;
+                    row["Ilosc"] = int.Parse(noder.ChildNodes[1].InnerText);
+                    row["Jednostka"] = noder.ChildNodes[2].InnerText;
+                    row["Cena"] = 100.50;
+                    Tab.Rows.Add(row);
+                }
             }
         }
     }
