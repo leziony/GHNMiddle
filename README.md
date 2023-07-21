@@ -1,2 +1,2 @@
 # GHNMiddle, a program to help with handling aircraft
-Currently in production
+Currently in production, basic funtions mostly done
