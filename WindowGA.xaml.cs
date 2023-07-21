@@ -101,6 +101,7 @@ namespace GHNMiddle
         private void ButtonLoadTarrif_Click(object sender, RoutedEventArgs e)
         {
             Tab.Rows.Clear();
+            Cost.Text = "N/A";
             if (fileAdded == false)
             {
                 MessageBox.Show("No file was added!", "Error!", MessageBoxButton.OK, MessageBoxImage.Error);
@@ -127,6 +128,10 @@ namespace GHNMiddle
         }
         private void ButtonCost_Click(object sender, RoutedEventArgs e)
         {
+            if (fileAdded == false)
+            {
+                MessageBox.Show("No file was added!", "Error!", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
             decimal sum = 0;
             foreach (DataRow row in Tab.Rows)
             {
