@@ -149,11 +149,19 @@ namespace GHNMiddle
             CostCalc();
         }
 
-        private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
+        private void DiscountTextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
             if (fileAdded != false)
             {
                 CostCalc();
+            }
+        }
+
+        private void Discount_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (System.Text.RegularExpressions.Regex.IsMatch(Discount.Text, "[^0-9]"))
+            {
+                Discount.Text = Discount.Text.Remove(Discount.Text.Length - 1,1);
             }
         }
     }
