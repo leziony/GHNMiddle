@@ -91,7 +91,6 @@ namespace GHNMiddle
                 windowconnect.conn.Open();
                 string sql = "DROP TABLE IF EXISTS "+ windowconnect.id + ";";
                 MySqlCommand cmd = new MySqlCommand(sql, windowconnect.conn);
-
                 cmd.ExecuteNonQuery();
                 windowconnect.conn.Dispose();
                 Application.Current.MainWindow.Show();
@@ -159,6 +158,7 @@ namespace GHNMiddle
                 XmlNamespaceManager nsmgr = new XmlNamespaceManager(xmlDoc.NameTable);
                 XmlNodeList noderc = xmlDoc.SelectNodes("/inflot_export_total/services_total_list/services_list//service", nsmgr);
                 int count = noderc.Count;
+                decimal result = 0;
                 for (int i = 1; i <= count; i++)
                 {
                     windowconnect.conn.Open();
@@ -175,14 +175,24 @@ namespace GHNMiddle
                     if (reader.HasRows)
                     {
                         reader.Read();
-                        decimal result = (decimal)reader.GetValue(0);
+                        result = (decimal)reader.GetValue(0);
                         row["Cena"] = result * value;
                     }
                     else
                     {
-                        row["Cena"] = 102.50;
+                        result = (decimal)124.50;
+                        row["Cena"] = 124.50;
                     }
                     Tab.Rows.Add(row);
+                    windowconnect.conn.Close();
+                    windowconnect.conn.Open();
+                    sql = "INSERT INTO " + windowconnect.id + " VALUES (?a,?b,?c,?d);";
+                    cmd = new MySqlCommand(sql,windowconnect.conn);
+                    cmd.Parameters.Add(new MySqlParameter("a", noder.ChildNodes[0].InnerText));
+                    cmd.Parameters.Add(new MySqlParameter("b", int.Parse(noder.ChildNodes[1].InnerText)));
+                    cmd.Parameters.Add(new MySqlParameter("c", noder.ChildNodes[2].InnerText));
+                    cmd.Parameters.Add(new MySqlParameter("d", result*value));
+                    cmd.ExecuteNonQuery();
                     windowconnect.conn.Close();
                 }
                 CostCalc();
