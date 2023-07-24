@@ -77,12 +77,12 @@ namespace GHNMiddle
 
         private void ButtonCA_Click(object sender, RoutedEventArgs e)
         {
-            //to be done soon
+            //Placeholder
         }
 
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
-            
+            //Todo
         }
     }
 }
