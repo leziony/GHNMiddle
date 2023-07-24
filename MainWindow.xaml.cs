@@ -44,23 +44,6 @@ namespace GHNMiddle
         public MainWindow()
         {
             InitializeComponent();
-            /*if (!connectsql("server=localhost;uid=root;pwd=admin;database=ghndata"))
-            {
-                MessageBox.Show("Failure");
-            }
-            else
-            {
-                string sql = "SELECT * FROM tarrif_code";
-                MySqlCommand cmd = new MySqlCommand(sql,conn);
-                MySqlDataReader dr = cmd.ExecuteReader();  
-                while (dr.Read())
-                {
-                    Console.WriteLine(dr[0] + " " + dr[1].ToString());
-                }
-                MessageBox.Show("Success");
-
-            }
-            */
         }
         public MainWindow(string s)
         {
@@ -82,7 +65,7 @@ namespace GHNMiddle
 
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
-            //Todo
+            //Potentially to do
         }
     }
 }

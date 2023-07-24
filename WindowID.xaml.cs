@@ -37,7 +37,6 @@ namespace GHNMiddle
                 "cost decimal(15,2)" +
                 ");";
             MySqlCommand cmd = new MySqlCommand(sql, wincon.conn);
-            //cmd.Parameters.Add(new MySqlParameter("userid", UserID.Text.ToString()));
             cmd.ExecuteNonQuery();
             wincon.changeId(UserID.Text);
             WindowGA Test = new WindowGA(UserID.Text);

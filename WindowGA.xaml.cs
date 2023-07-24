@@ -91,7 +91,7 @@ namespace GHNMiddle
                 windowconnect.conn.Open();
                 string sql = "DROP TABLE IF EXISTS "+ windowconnect.id + ";";
                 MySqlCommand cmd = new MySqlCommand(sql, windowconnect.conn);
-                //cmd.Parameters.Add(new MySqlParameter("userid", windowconnect.id));
+
                 cmd.ExecuteNonQuery();
                 windowconnect.conn.Dispose();
                 Application.Current.MainWindow.Show();
