@@ -54,6 +54,12 @@ namespace GHNMiddle
             InitializeComponent();
             TableInit();
         }
+        public WindowGA(string s)
+        {
+            InitializeComponent();
+            TableInit();
+            windowconnect.id = s;
+        }
         public void CostCalc()
         {
             if (fileAdded == false)
@@ -74,9 +80,25 @@ namespace GHNMiddle
         }
         private void WindowGA_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
-            windowconnect.conn.Dispose();
-            Application.Current.MainWindow.Show();
-            windowconnect.Close();
+            var ifCancel = MessageBox.Show("Nie wyeksportowano danych. Po wyjściu z okna dane zostaną UTRACONE. \n Czy nadal chcesz wyjść z programu?", "Wyjscie", MessageBoxButton.OKCancel, MessageBoxImage.Warning);
+            if(ifCancel != MessageBoxResult.OK) 
+            {
+                e.Cancel = true;
+            }
+            else
+            {
+                windowconnect.connectsql("server=localhost;uid=root;pwd=admin;database=ghndata;");
+                windowconnect.conn.Open();
+                string sql = "DROP TABLE IF EXISTS "+ windowconnect.id + ";";
+                MySqlCommand cmd = new MySqlCommand(sql, windowconnect.conn);
+                //cmd.Parameters.Add(new MySqlParameter("userid", windowconnect.id));
+                cmd.ExecuteNonQuery();
+                windowconnect.conn.Dispose();
+                Application.Current.MainWindow.Show();
+                windowconnect.changeId("N/A");
+                windowconnect.Close();
+            }    
+
         }
 
         private void ButtonSearch_Click(object sender, RoutedEventArgs e)

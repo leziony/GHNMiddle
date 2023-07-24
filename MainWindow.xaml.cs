@@ -22,6 +22,7 @@ namespace GHNMiddle
     public partial class MainWindow : Window
     {
         public MySqlConnector.MySqlConnection conn;
+        public string id;
         public bool connectsql(string connection)
         {
             try
@@ -32,6 +33,11 @@ namespace GHNMiddle
             catch (MySqlException ex) { return false; }
             conn.Close();
             return true;
+        }
+
+        public void changeId(string idr)
+        {
+            id=idr;
         }
         
         
@@ -56,11 +62,16 @@ namespace GHNMiddle
             }
             */
         }
+        public MainWindow(string s)
+        {
+            InitializeComponent();
+            id = s;
+        }
 
         private void ButtonGA_Click(object sender, RoutedEventArgs e)
         {
-            WindowGA GA = new WindowGA(); 
-            GA.Show();
+            WindowID ID = new WindowID(); 
+            ID.Show();
             this.Hide();
         }
 
