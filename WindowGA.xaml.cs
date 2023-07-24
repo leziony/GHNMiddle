@@ -164,5 +164,5 @@ namespace GHNMiddle
                 Discount.Text = Discount.Text.Remove(Discount.Text.Length - 1,1);
             }
         }
-    }
+    }           
 }
