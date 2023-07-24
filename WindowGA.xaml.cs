@@ -153,6 +153,15 @@ namespace GHNMiddle
             {
                 windowconnect.connectsql("server=localhost;uid=root;pwd=admin;database=ghndata;");
                 String filename = XMLFilePath.Text;
+                try
+                {
+                    XmlDocument xmlDoct = new XmlDocument();
+                    xmlDoct.Load(filename);
+                }
+                catch (XmlException ex) {
+                MessageBox.Show ("This is not a valid XML File. Try again.","Error",MessageBoxButton.OK, MessageBoxImage.Error);
+                    return;
+                }
                 XmlDocument xmlDoc = new XmlDocument();
                 xmlDoc.Load(filename);
                 XmlNamespaceManager nsmgr = new XmlNamespaceManager(xmlDoc.NameTable);
