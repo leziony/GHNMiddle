@@ -1,4 +1,5 @@
 ﻿using Microsoft.Win32;
+using MySqlConnector;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -26,6 +27,7 @@ namespace GHNMiddle
         System.Data.DataTable Tab = new DataTable();
         DataColumn column;
         DataRow row;
+        MainWindow windowconnect = new MainWindow();
 
         public void TableInit()
         {
@@ -72,7 +74,9 @@ namespace GHNMiddle
         }
         private void WindowGA_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
+            windowconnect.conn.Dispose();
             Application.Current.MainWindow.Show();
+            windowconnect.Close();
         }
 
         private void ButtonSearch_Click(object sender, RoutedEventArgs e)
@@ -126,6 +130,7 @@ namespace GHNMiddle
             }
             else
             {
+                windowconnect.connectsql("server=localhost;uid=root;pwd=admin;database=ghndata;");
                 String filename = XMLFilePath.Text;
                 XmlDocument xmlDoc = new XmlDocument();
                 xmlDoc.Load(filename);
@@ -134,14 +139,31 @@ namespace GHNMiddle
                 int count = noderc.Count;
                 for (int i = 1; i <= count; i++)
                 {
+                    windowconnect.conn.Open();
                     XmlNode noder = xmlDoc.SelectSingleNode("/inflot_export_total/services_total_list/services_list/service[" + i.ToString() + "]", nsmgr);
                     row = Tab.NewRow();
                     row["Taryfa"] = noder.ChildNodes[0].InnerText;
-                    row["Ilosc"] = int.Parse(noder.ChildNodes[1].InnerText);
+                    int value = int.Parse(noder.ChildNodes[1].InnerText);
+                    row["Ilosc"] = value;
                     row["Jednostka"] = noder.ChildNodes[2].InnerText;
-                    row["Cena"] = 102.50;
+                    string sql = "SELECT cost FROM tarrif_code WHERE tarrifID=?tarrif LIMIT 1";
+                    MySqlCommand cmd = new MySqlCommand(sql,windowconnect.conn);
+                    cmd.Parameters.Add(new MySqlParameter("tarrif", noder.ChildNodes[0].InnerText));
+                    MySqlDataReader reader = cmd.ExecuteReader();
+                    if (reader.HasRows)
+                    {
+                        reader.Read();
+                        decimal result = (decimal)reader.GetValue(0);
+                        row["Cena"] = result * value;
+                    }
+                    else
+                    {
+                        row["Cena"] = 102.50;
+                    }
                     Tab.Rows.Add(row);
+                    windowconnect.conn.Close();
                 }
+                CostCalc();
             }
         }
         private void ButtonCost_Click(object sender, RoutedEventArgs e)

@@ -21,7 +21,7 @@ namespace GHNMiddle
     /// </summary>
     public partial class MainWindow : Window
     {
-        MySqlConnector.MySqlConnection conn;
+        public MySqlConnector.MySqlConnection conn;
         public bool connectsql(string connection)
         {
             try
@@ -30,6 +30,7 @@ namespace GHNMiddle
                 conn.Open();
             }
             catch (MySqlException ex) { return false; }
+            conn.Close();
             return true;
         }
         
@@ -37,7 +38,7 @@ namespace GHNMiddle
         public MainWindow()
         {
             InitializeComponent();
-            if (!connectsql("server=localhost;uid=root;pwd=admin;database=ghndata"))
+            /*if (!connectsql("server=localhost;uid=root;pwd=admin;database=ghndata"))
             {
                 MessageBox.Show("Failure");
             }
@@ -48,10 +49,12 @@ namespace GHNMiddle
                 MySqlDataReader dr = cmd.ExecuteReader();  
                 while (dr.Read())
                 {
-                    MessageBox.Show(dr[0] + " " + dr[1].ToString());
+                    Console.WriteLine(dr[0] + " " + dr[1].ToString());
                 }
+                MessageBox.Show("Success");
 
             }
+            */
         }
 
         private void ButtonGA_Click(object sender, RoutedEventArgs e)
@@ -64,6 +67,11 @@ namespace GHNMiddle
         private void ButtonCA_Click(object sender, RoutedEventArgs e)
         {
             //to be done soon
+        }
+
+        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            
         }
     }
 }
