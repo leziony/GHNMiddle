@@ -39,6 +39,7 @@
         <Button x:Name="CostButton" Content="Wylicz" HorizontalAlignment="Left" Margin="680,173,0,0" VerticalAlignment="Top" Click="ButtonCost_Click"/>
         <TextBlock HorizontalAlignment="Left" Margin="524,198,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="96"><Run Text="Zniżka ogólna"/><Run Text="(%):"/></TextBlock>
         <TextBox x:Name="Discount" HorizontalAlignment="Left" Margin="628,198,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="50" TextChanged="DiscountTextBox_TextChanged" KeyDown="Discount_KeyDown" />
-        <Button x:Name="discount" Content="Zniżka na taryfe" HorizontalAlignment="Left" Margin="206,176,0,0" VerticalAlignment="Top" Click="ButtonDiscount_Click"/>
+        <Button x:Name="discountButton" Content="Zniżka na taryfe" HorizontalAlignment="Left" Margin="206,176,0,0" VerticalAlignment="Top" Click="ButtonDiscount_Click"/>
+        <Button x:Name="recoveryButton" Content="Odzyskaj dane" HorizontalAlignment="Left" Margin="340,176,0,0" VerticalAlignment="Top" Width="85" Click="ButtonRecover_Click"/>
     </Grid>
 </Window>

@@ -3,6 +3,7 @@ using MySqlConnector;
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -54,12 +55,14 @@ namespace GHNMiddle
         {
             InitializeComponent();
             TableInit();
+            windowconnect.connectsql("server=localhost;uid=root;pwd=admin;database=ghndata;");
             this.Owner = this;
         }
         public WindowGA(string s)
         {
             InitializeComponent();
             TableInit();
+            windowconnect.connectsql("server=localhost;uid=root;pwd=admin;database=ghndata;");
             windowconnect.id = s;
         }
         public void SQLupdate()
@@ -81,7 +84,12 @@ namespace GHNMiddle
                     Tab.Rows.Add(row);
                 }
             }
+            else
+            {
+                MessageBox.Show("Your database was already deleted. Data is irrecoverable.", "Error!", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
             windowconnect.conn.Close();
+            fileAdded = true;
         }
 
         public void CostCalc()
@@ -131,7 +139,7 @@ namespace GHNMiddle
         private void ButtonSearch_Click(object sender, RoutedEventArgs e)
         {
             OpenFileDialog ofd = new OpenFileDialog();
-            ofd.Filter = "XML (*.xml)|*.xml|All files(*.*)|*.*";
+            ofd.Filter = "XML (*.xml)|*.xml";
             if (ofd.ShowDialog() == true)
             {
                 XMLFilePath.Text = ofd.FileName;
@@ -144,6 +152,11 @@ namespace GHNMiddle
             if (fileAdded == false)
             {
                 MessageBox.Show("No file was added!", "Error!", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
+            else if (XMLFilePath.Text == "Recovered from SQL")
+            {
+                MessageBox.Show("Aktualnie jesteś w trybie post-recovery. \n Musisz znaleść orginalny plik XML by wprowadić dane klienta", "Error!", MessageBoxButton.OK, MessageBoxImage.Error);
             }
             else
             {
@@ -173,7 +186,7 @@ namespace GHNMiddle
         {
             Tab.Rows.Clear();
             Cost.Text = "N/A";
-            if (fileAdded == false)
+            if (fileAdded == false || XMLFilePath.Text == "No XML File")
             {
                 MessageBox.Show("No file was added!", "Error!", MessageBoxButton.OK, MessageBoxImage.Error);
             }
@@ -188,6 +201,11 @@ namespace GHNMiddle
                 }
                 catch (XmlException ex) {
                 MessageBox.Show ("This is not a valid XML File. Try again.","Error",MessageBoxButton.OK, MessageBoxImage.Error);
+                    return;
+                }
+                catch (FileNotFoundException ex)
+                {
+                    MessageBox.Show("This is not a valid XML File. Try again.", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
                     return;
                 }
                 XmlDocument xmlDoc = new XmlDocument();
@@ -262,6 +280,20 @@ namespace GHNMiddle
             dis.Owner = this;
             dis.Show();
 
+        }
+
+        private void ButtonRecover_Click(object sender, RoutedEventArgs e)
+        {
+            if (fileAdded== true) 
+            {
+                var confirm = MessageBox.Show("Odzyskiwanie danych oznacza utrate danych.\nCzy na pewno chcesz odzyskać dane?", "Odzysk", MessageBoxButton.YesNo, MessageBoxImage.Exclamation);
+                if(confirm == MessageBoxResult.No) {
+                    return;
+                }
+                fileAdded = false;
+            }
+            XMLFilePath.Text = "Recovered from SQL";
+            SQLupdate();
         }
     }           
 }
