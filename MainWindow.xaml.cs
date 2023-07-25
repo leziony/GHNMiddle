@@ -60,7 +60,7 @@ namespace GHNMiddle
 
         private void ButtonCA_Click(object sender, RoutedEventArgs e)
         {
-            //Placeholder for later
+            //Probably will be changed later
         }
 
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
