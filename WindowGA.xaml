@@ -6,6 +6,7 @@
         xmlns:local="clr-namespace:GHNMiddle"
         mc:Ignorable="d"
         Closing="WindowGA_Closing"
+        Activated="Window_Activated"
         Title="WindowGA" Height="450" Width="800">
     <Grid>
         <TextBlock x:Name="XMLFilePath" HorizontalAlignment="Left" Margin="400,22,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="247"><Run Language="pl-pl" Text="No XML File"/></TextBlock>

@@ -31,7 +31,6 @@ namespace GHNMiddle
         {
             wincon.connectsql("server=localhost;uid=root;pwd=admin;database=ghndata;");
             wincon.conn.Open();
-            bool percent;
             decimal value;
             decimal percentValue;
             decimal currentCost;
@@ -53,14 +52,12 @@ namespace GHNMiddle
                     read.Read();
                     if (int.Parse(read["is_percent"].ToString()) == 0)
                     {
-                        percent = false;
                         value = (decimal)read["discount_value"];
                         currentCost = currentCost - value;
                         Math.Round(currentCost, 2);
                     }
                     else
                     {
-                        percent = true;
                         percentValue = (decimal)read["discount_value"];
                         currentCost = currentCost * ((100 - percentValue) / 100);
                         Math.Round(currentCost, 2);
@@ -75,7 +72,6 @@ namespace GHNMiddle
                     MessageBox.Show("Zmiany zatwierdzone", "Sukces", MessageBoxButton.OK, MessageBoxImage.Information);
                     wincon.conn.Dispose();
                     wincon.Close();
-                    ((WindowGA)this.Owner).SQLupdate();
                     this.Close();
 
 
@@ -95,6 +91,11 @@ namespace GHNMiddle
                 return;
             
             }
+        }
+
+        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            wincon.Close();
         }
     }
 }

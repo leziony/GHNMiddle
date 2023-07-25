@@ -26,6 +26,9 @@ namespace GHNMiddle
     public partial class WindowGA : Window
     {
         Boolean fileAdded = false;
+        bool first_launch = false;
+        bool checkup = false;
+        bool exportblocker= false;
         bool exportComplete = false;
         System.Data.DataTable Tab = new DataTable();
         DataColumn column;
@@ -57,7 +60,6 @@ namespace GHNMiddle
             InitializeComponent();
             TableInit();
             windowconnect.connectsql("server=localhost;uid=root;pwd=admin;database=ghndata;");
-            this.Owner = this;
         }
         public WindowGA(string s)
         {
@@ -85,9 +87,17 @@ namespace GHNMiddle
                     Tab.Rows.Add(row);
                 }
             }
-            else
+            else if (checkup == false)
             {
                 MessageBox.Show("Your database was already deleted. Data is irrecoverable.", "Error!", MessageBoxButton.OK, MessageBoxImage.Error);
+                exportblocker = true;
+                windowconnect.conn.Close();
+                return;
+            }
+            else
+            {
+                windowconnect.conn.Close();
+                return;
             }
             windowconnect.conn.Close();
             fileAdded = true;
@@ -292,7 +302,6 @@ namespace GHNMiddle
         private void ButtonDiscount_Click(object sender, RoutedEventArgs e)
         {
             WindowDiscount dis = new WindowDiscount(windowconnect.id);
-            dis.Owner = this;
             dis.Show();
 
         }
@@ -313,7 +322,14 @@ namespace GHNMiddle
 
         private void ButtonExport_Click(object sender, RoutedEventArgs e)
         {
+            exportblocker = false;
             SQLupdate();
+            if(exportblocker == true)
+            {
+                MessageBox.Show("Export was blocked due to an error", "Error!", MessageBoxButton.OK, MessageBoxImage.Error);
+                exportblocker= false;
+                return;
+            }
             windowconnect.conn.Open();
             /*String filename = XMLFilePath.Text;
             XmlDocument xmlDoc = new XmlDocument();
@@ -352,5 +368,21 @@ namespace GHNMiddle
 
         }
 
+        private void Window_Activated(object sender, EventArgs e)
+        {
+            if(first_launch == false)
+            {
+                first_launch = true;
+                return;
+            }
+            else if (fileAdded == false) { return; }
+            else
+            {
+                checkup = true;
+                SQLupdate();
+                checkup = false;
+            }
+
+        }
     }           
 }
