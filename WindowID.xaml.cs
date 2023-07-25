@@ -24,6 +24,7 @@ namespace GHNMiddle
         public WindowID()
         {
             InitializeComponent();
+            //maybe more
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
