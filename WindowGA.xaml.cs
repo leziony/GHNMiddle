@@ -26,6 +26,7 @@ namespace GHNMiddle
     public partial class WindowGA : Window
     {
         Boolean fileAdded = false;
+        bool exportComplete = false;
         System.Data.DataTable Tab = new DataTable();
         DataColumn column;
         DataRow row;
@@ -115,24 +116,36 @@ namespace GHNMiddle
             suma = Math.Round(suma,2);
             Cost.Text = suma.ToString();
         }
+
+        public void TableDrop()
+        {
+            windowconnect.connectsql("server=localhost;uid=root;pwd=admin;database=ghndata;");
+            windowconnect.conn.Open();
+            string sql = "DROP TABLE IF EXISTS " + windowconnect.id + ";";
+            MySqlCommand cmd = new MySqlCommand(sql, windowconnect.conn);
+            cmd.ExecuteNonQuery();
+            windowconnect.conn.Dispose();
+            Application.Current.MainWindow.Show();
+            windowconnect.changeId("N/A");
+            windowconnect.Close();
+        }
         private void WindowGA_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
-            var ifCancel = MessageBox.Show("Nie wyeksportowano danych. Po wyjściu z okna dane zostaną UTRACONE. \n Czy nadal chcesz wyjść z programu?", "Wyjscie", MessageBoxButton.OKCancel, MessageBoxImage.Warning);
-            if(ifCancel != MessageBoxResult.OK) 
-            {
-                e.Cancel = true;
+            if(exportComplete == false) {
+                var ifCancel = MessageBox.Show("Nie wyeksportowano danych. Po wyjściu z okna dane zostaną UTRACONE. \n Czy nadal chcesz wyjść z programu?", "Wyjscie", MessageBoxButton.OKCancel, MessageBoxImage.Warning);
+                if (ifCancel != MessageBoxResult.OK)
+                {
+                    e.Cancel = true;
+                    return;
+                }
+                else
+                {
+                    TableDrop();
+                }
             }
             else
             {
-                windowconnect.connectsql("server=localhost;uid=root;pwd=admin;database=ghndata;");
-                windowconnect.conn.Open();
-                string sql = "DROP TABLE IF EXISTS "+ windowconnect.id + ";";
-                MySqlCommand cmd = new MySqlCommand(sql, windowconnect.conn);
-                cmd.ExecuteNonQuery();
-                windowconnect.conn.Dispose();
-                Application.Current.MainWindow.Show();
-                windowconnect.changeId("N/A");
-                windowconnect.Close();
+                TableDrop();
             }    
 
         }
@@ -161,6 +174,7 @@ namespace GHNMiddle
             }
             else
             {
+                exportComplete = false;
                 String filename = XMLFilePath.Text;
                 XmlDocument xmlDoc = new XmlDocument();
                 xmlDoc.Load(filename);
@@ -296,5 +310,48 @@ namespace GHNMiddle
             XMLFilePath.Text = "Recovered from SQL";
             SQLupdate();
         }
+
+        private void ButtonExport_Click(object sender, RoutedEventArgs e)
+        {
+            SQLupdate();
+            windowconnect.conn.Open();
+            String filename = XMLFilePath.Text;
+            XmlDocument xmlDoc = new XmlDocument();
+            xmlDoc.Load(filename);
+            XmlNamespaceManager nsmgr = new XmlNamespaceManager(xmlDoc.NameTable);
+            XmlNodeList noder = xmlDoc.SelectNodes("/inflot_export_total/commercial_client", nsmgr);
+            string sql = "SELECT * FROM " + windowconnect.id;
+            MySqlCommand cmd = new MySqlCommand(sql,windowconnect.conn);
+            MySqlDataReader reader = cmd.ExecuteReader();
+            using (StreamWriter w = new StreamWriter("export.txt"))
+            {
+                while (reader.Read())
+                {
+                    w.WriteLine(reader.GetString(0));
+
+                }
+                foreach (XmlNode xn in noder)
+                {
+                    w.WriteLine(xn["commercial_client_id"].InnerText);
+                    w.WriteLine(xn["name"].InnerText);
+                    w.WriteLine(xn["nip"].InnerText);
+                    w.WriteLine(xn["street"].InnerText);
+                    w.WriteLine(xn["house_number"].InnerText);
+                    w.WriteLine(xn["flat_number"].InnerText);
+                    w.WriteLine(xn["postal_code"].InnerText);
+                    w.WriteLine(xn["city"].InnerText);
+                    w.WriteLine(xn["country"].InnerText);
+                    w.WriteLine(xn["country_iso2"].InnerText);
+
+                }
+                w.Close();
+             
+            }
+            windowconnect.conn.Close();
+            MessageBox.Show("Dane zostały exportowane","Export complete",MessageBoxButton.OK,MessageBoxImage.Exclamation);
+            exportComplete = true;
+
+        }
+
     }           
 }
