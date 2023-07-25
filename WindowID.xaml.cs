@@ -30,7 +30,7 @@ namespace GHNMiddle
         {
             wincon.connectsql("server=localhost;uid=root;pwd=admin;database=ghndata;");
             wincon.conn.Open();
-            string sql = "CREATE TABLE "+ UserID.Text +"(" +
+            string sql = "CREATE TABLE IF NOT EXISTS "+ UserID.Text +"(" +
                 "tarrifcode varchar(255)," +
                 "ammount int," +
                 "unit varchar(255)," +
