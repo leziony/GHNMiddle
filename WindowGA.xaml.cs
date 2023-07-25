@@ -90,6 +90,7 @@ namespace GHNMiddle
             }
             windowconnect.conn.Close();
             fileAdded = true;
+            CostCalc();
         }
 
         public void CostCalc()
@@ -236,7 +237,7 @@ namespace GHNMiddle
                     else
                     {
                         result = (decimal)124.50;
-                        row["Cena"] = 124.50;
+                        row["Cena"] = 124.50 * value;
                     }
                     Tab.Rows.Add(row);
                     windowconnect.conn.Close();
