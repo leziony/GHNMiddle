@@ -54,6 +54,7 @@ namespace GHNMiddle
         {
             InitializeComponent();
             TableInit();
+            this.Owner = this;
         }
         public WindowGA(string s)
         {
@@ -61,6 +62,28 @@ namespace GHNMiddle
             TableInit();
             windowconnect.id = s;
         }
+        public void SQLupdate()
+        {
+            windowconnect.conn.Open();
+            string sql = "SELECT * FROM " + windowconnect.id;
+            MySqlCommand cmd = new MySqlCommand(sql, windowconnect.conn);
+            MySqlDataReader read = cmd.ExecuteReader();
+            if(read.HasRows)
+            {
+                Tab.Rows.Clear();
+                while (read.Read())
+                {
+                    row = Tab.NewRow();
+                    row["Taryfa"] = read["tarrifcode"];
+                    row["Ilosc"] = read["ammount"];
+                    row["Jednostka"] = read["unit"];
+                    row["Cena"] = read["cost"];
+                    Tab.Rows.Add(row);
+                }
+            }
+            windowconnect.conn.Close();
+        }
+
         public void CostCalc()
         {
             if (fileAdded == false)
@@ -231,6 +254,14 @@ namespace GHNMiddle
             {
                 Discount.Text = Discount.Text.Remove(Discount.Text.Length - 1,1);
             }
+        }
+
+        private void ButtonDiscount_Click(object sender, RoutedEventArgs e)
+        {
+            WindowDiscount dis = new WindowDiscount(windowconnect.id);
+            dis.Owner = this;
+            dis.Show();
+
         }
     }           
 }
