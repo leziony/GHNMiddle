@@ -1,0 +1,17 @@
+﻿<Window x:Class="GHNMiddle.WindowDiscount"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:GHNMiddle"
+        mc:Ignorable="d"
+        Title="WindowDiscount" Height="250" Width="200">
+    <Grid>
+        <TextBox x:Name="discountCode" HorizontalAlignment="Center" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" Margin="0,138,0,0" TextChanged="discountCode_TextChanged"/>
+        <TextBox x:Name="tarrif_code" HorizontalAlignment="Center" Margin="0,56,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
+        <Button Content="Zatwierdź" HorizontalAlignment="Center" Margin="0,182,0,0" VerticalAlignment="Top" Click="Button_Click"/>
+        <TextBlock HorizontalAlignment="Left" Margin="56,20,0,0" TextWrapping="Wrap" VerticalAlignment="Top"><Run Text="Podaj ko"/><Run Language="pl-pl" Text="d"/><Run Text=" tarfy"/></TextBlock>
+        <TextBlock HorizontalAlignment="Center" Margin="0,101,0,0" TextWrapping="Wrap" VerticalAlignment="Top"><Run Language="pl-pl" Text="Podaj kod obniżki"/></TextBlock>
+
+    </Grid>
+</Window>
