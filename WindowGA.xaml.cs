@@ -14,6 +14,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using System.Windows.Threading;
 using System.Xml;
 
 namespace GHNMiddle
@@ -67,6 +68,10 @@ namespace GHNMiddle
                 MessageBox.Show("No file was added!", "Error!", MessageBoxButton.OK, MessageBoxImage.Error);
             }
             decimal suma = 0;
+            if(Discount.Text.Length == 0)
+            {
+                Discount.Text = "0";
+            }
             foreach (DataRow row in Tab.Rows)
             {
                 suma += (decimal)row["Cena"];
