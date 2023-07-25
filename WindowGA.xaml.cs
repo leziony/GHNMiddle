@@ -315,11 +315,11 @@ namespace GHNMiddle
         {
             SQLupdate();
             windowconnect.conn.Open();
-            String filename = XMLFilePath.Text;
+            /*String filename = XMLFilePath.Text;
             XmlDocument xmlDoc = new XmlDocument();
             xmlDoc.Load(filename);
             XmlNamespaceManager nsmgr = new XmlNamespaceManager(xmlDoc.NameTable);
-            XmlNodeList noder = xmlDoc.SelectNodes("/inflot_export_total/commercial_client", nsmgr);
+            XmlNodeList noder = xmlDoc.SelectNodes("/inflot_export_total/commercial_client", nsmgr);*/
             string sql = "SELECT * FROM " + windowconnect.id;
             MySqlCommand cmd = new MySqlCommand(sql,windowconnect.conn);
             MySqlDataReader reader = cmd.ExecuteReader();
@@ -327,23 +327,22 @@ namespace GHNMiddle
             {
                 while (reader.Read())
                 {
-                    w.WriteLine(reader.GetString(0));
+                    w.Write(reader["tarrifcode"]);
+                    w.Write(reader["ammount"].ToString());
+                    w.Write(reader["unit"]);
+                    w.WriteLine(reader["cost"]);
 
                 }
-                foreach (XmlNode xn in noder)
-                {
-                    w.WriteLine(xn["commercial_client_id"].InnerText);
-                    w.WriteLine(xn["name"].InnerText);
-                    w.WriteLine(xn["nip"].InnerText);
-                    w.WriteLine(xn["street"].InnerText);
-                    w.WriteLine(xn["house_number"].InnerText);
-                    w.WriteLine(xn["flat_number"].InnerText);
-                    w.WriteLine(xn["postal_code"].InnerText);
-                    w.WriteLine(xn["city"].InnerText);
-                    w.WriteLine(xn["country"].InnerText);
-                    w.WriteLine(xn["country_iso2"].InnerText);
-
-                }
+                    w.WriteLine(ClientID.Text);
+                    w.WriteLine(CompanyName.Text);
+                    w.WriteLine(TaxpayerID.Text);
+                    w.WriteLine(Street.Text);
+                    w.WriteLine(HouseNr.Text);
+                    w.WriteLine(FlatNr.Text);
+                    w.WriteLine(PostalCode.Text);
+                    w.WriteLine(City.Text);
+                    w.WriteLine(Country.Text);
+                    w.WriteLine(CountryCode.Text);
                 w.Close();
              
             }
