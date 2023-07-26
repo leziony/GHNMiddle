@@ -69,7 +69,7 @@ namespace GHNMiddle
                     cmd.Parameters.Add(new MySqlParameter("c",currentCost));
                     cmd.Parameters.Add(new MySqlParameter ("s",tarrifCode.Text));
                     cmd.ExecuteNonQuery();
-                    MessageBox.Show("Zmiany zatwierdzone", "Sukces", MessageBoxButton.OK, MessageBoxImage.Information);
+                    MessageBox.Show("Zmiany zatwierdzone", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
                     wincon.conn.Dispose();
                     wincon.Close();
                     this.Close();
