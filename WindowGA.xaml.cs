@@ -349,11 +349,6 @@ namespace GHNMiddle
                 return;
             }
             windowconnect.conn.Open();
-            /*String filename = XMLFilePath.Text;
-            XmlDocument xmlDoc = new XmlDocument();
-            xmlDoc.Load(filename);
-            XmlNamespaceManager nsmgr = new XmlNamespaceManager(xmlDoc.NameTable);
-            XmlNodeList noder = xmlDoc.SelectNodes("/inflot_export_total/commercial_client", nsmgr);*/
             string sql = "SELECT * FROM " + windowconnect.id;
             MySqlCommand cmd = new MySqlCommand(sql,windowconnect.conn);
             MySqlDataReader reader = cmd.ExecuteReader();
