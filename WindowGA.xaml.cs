@@ -26,6 +26,7 @@ namespace GHNMiddle
     public partial class WindowGA : Window
     {
         Boolean fileAdded = false;
+        bool sqlReady= false;
         bool first_launch = false;
         bool checkup = false;
         bool exportblocker= false;
@@ -101,6 +102,7 @@ namespace GHNMiddle
             }
             windowconnect.conn.Close();
             fileAdded = true;
+            sqlReady = true;
             CostCalc();
         }
 
@@ -134,6 +136,7 @@ namespace GHNMiddle
             string sql = "DROP TABLE IF EXISTS " + windowconnect.id + ";";
             MySqlCommand cmd = new MySqlCommand(sql, windowconnect.conn);
             cmd.ExecuteNonQuery();
+            sqlReady = false;
             windowconnect.conn.Dispose();
             Application.Current.MainWindow.Show();
             windowconnect.changeId("N/A");
@@ -162,12 +165,22 @@ namespace GHNMiddle
 
         private void ButtonSearch_Click(object sender, RoutedEventArgs e)
         {
+            if (exportComplete == false)
+            {
+                var ifCancel = MessageBox.Show("Nie wyeksportowano danych. Po wyjściu z okna dane zostaną UTRACONE. \n Czy nadal chcesz wyjść z programu?", "Wyjscie", MessageBoxButton.OKCancel, MessageBoxImage.Warning);
+                if (ifCancel != MessageBoxResult.OK)
+                {
+                    return;
+                }
+            }
             OpenFileDialog ofd = new OpenFileDialog();
             ofd.Filter = "XML (*.xml)|*.xml";
             if (ofd.ShowDialog() == true)
             {
                 XMLFilePath.Text = ofd.FileName;
                 fileAdded = true;
+                Tab.Rows.Clear();
+                sqlReady = false;
             }
         }
 
@@ -214,6 +227,10 @@ namespace GHNMiddle
             if (fileAdded == false || XMLFilePath.Text == "No XML File")
             {
                 MessageBox.Show("No file was added!", "Error!", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+            else if (sqlReady == true)
+            {
+                SQLupdate();
             }
             else
             {
@@ -275,6 +292,7 @@ namespace GHNMiddle
                     cmd.ExecuteNonQuery();
                     windowconnect.conn.Close();
                 }
+                sqlReady = true;
                 CostCalc();
             }
         }
