@@ -21,6 +21,7 @@ namespace GHNMiddle
     public partial class WindowID : Window
     {
         MainWindow wincon = new MainWindow();
+        bool complete = false;
         public WindowID()
         {
             InitializeComponent();
@@ -41,6 +42,7 @@ namespace GHNMiddle
             wincon.changeId(UserID.Text);
             WindowGA Test = new WindowGA(UserID.Text);
             Test.Show();
+            complete = true;
             wincon.conn.Dispose();
             wincon.Close();
             this.Close();
@@ -50,7 +52,7 @@ namespace GHNMiddle
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
             wincon.Close();
-            Application.Current.MainWindow.Show();
+            if(complete == false) { Application.Current.MainWindow.Show(); }
         }
     }
 }
