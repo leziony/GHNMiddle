@@ -165,9 +165,9 @@ namespace GHNMiddle
 
         private void ButtonSearch_Click(object sender, RoutedEventArgs e)
         {
-            if (exportComplete == false)
+            if (exportComplete == false && fileAdded == true)
             {
-                var ifCancel = MessageBox.Show("Nie wyeksportowano danych. Po wyjściu z okna dane zostaną UTRACONE. \n Czy nadal chcesz wyjść z programu?", "Wyjscie", MessageBoxButton.OKCancel, MessageBoxImage.Warning);
+                var ifCancel = MessageBox.Show("Nie wyeksportowano danych. Po wyjściu z okna dane mogą zostać utracone \n Czy nadal chcesz wybrać nowy plik", "Load", MessageBoxButton.OKCancel, MessageBoxImage.Warning);
                 if (ifCancel != MessageBoxResult.OK)
                 {
                     return;
