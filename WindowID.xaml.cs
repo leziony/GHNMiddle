@@ -46,5 +46,11 @@ namespace GHNMiddle
             this.Close();
 
         }
+
+        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            wincon.Close();
+            Application.Current.MainWindow.Show();
+        }
     }
 }
