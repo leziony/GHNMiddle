@@ -60,12 +60,12 @@ namespace GHNMiddle
 
         private void ButtonCA_Click(object sender, RoutedEventArgs e)
         {
-            //Probably will be changed later
+            //Probably will be changed later into admin window
         }
 
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
-            //Potentially to do
+            //Potentially to do later, but likely to be deleted
         }
     }
 }
