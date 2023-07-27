@@ -66,7 +66,7 @@ namespace GHNMiddle
 
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
-            //Potentially to do later, but likely to be deleted
+            //Likely to be deleted
         }
     }
 }
