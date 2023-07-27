@@ -6,13 +6,15 @@
         xmlns:local="clr-namespace:GHNMiddle"
         Closing="Window_Closing"
         mc:Ignorable="d"
-        Title="Program Liczbowy" Height="400" Width="600">
+        Title="Program Liczbowy" Height="400" Width="300">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
-        <Button x:Name="Button_GA" Content="General&#xD;&#xA;Aviation" HorizontalAlignment="Left" Click="ButtonGA_Click" Margin="0,102,0,0" VerticalAlignment="Top" Height="170" Width="168"/>
-        <Button x:Name="Button_CA" Content="Commertial&#xD;&#xA;Aviation" HorizontalAlignment="Left" Click="ButtonCA_Click" Margin="432,94,0,0" VerticalAlignment="Top" Height="170" Width="168" IsEnabled="False"/>
+        <Button x:Name="Button_GA" Content="Logowanie do Systemu" HorizontalAlignment="Center" Click="ButtonGA_Click" Margin="0,57,0,0" VerticalAlignment="Top" Height="45" Width="168"/>
+        <Button x:Name="Button_CA" Content="Logowanie administratora" HorizontalAlignment="Center" Click="ButtonCA_Click" Margin="0,279,0,0" VerticalAlignment="Top" Height="45" Width="168" IsEnabled="False"/>
+        <TextBlock HorizontalAlignment="Center" Margin="0,22,0,0" TextWrapping="Wrap" VerticalAlignment="Top"><Run Language="pl-pl" Text="Witamy w kalulatorze kwot GHN"/></TextBlock>
+        <TextBlock HorizontalAlignment="Center" Margin="0,247,0,0" TextWrapping="Wrap" VerticalAlignment="Top"><Run Language="pl-pl" Text="Dostęp dla administratorów"/></TextBlock>
 
     </Grid>
 </Window>
