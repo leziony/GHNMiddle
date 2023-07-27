@@ -28,10 +28,10 @@ namespace GHNMiddle
         {
             var test = MessageBox.Show("Funkcja w testach. \n Czy chcesz sprawdzić czy to działa?","Testy",MessageBoxButton.YesNo,MessageBoxImage.Question);
             if (test == MessageBoxResult.Yes)
-            {
+        {
                 MessageBox.Show(login.Text + " " + password.Text,"Testy");
             }
-           
+
             this.Close();
         }
     }
