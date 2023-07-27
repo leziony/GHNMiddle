@@ -60,7 +60,8 @@ namespace GHNMiddle
 
         private void ButtonCA_Click(object sender, RoutedEventArgs e)
         {
-            //Probably will be changed later into admin window
+           WindowAdminLog log = new WindowAdminLog();
+           log.Show();
         }
 
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
