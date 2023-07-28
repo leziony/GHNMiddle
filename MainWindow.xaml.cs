@@ -62,6 +62,7 @@ namespace GHNMiddle
         {
            WindowAdminLog log = new WindowAdminLog();
            log.Show();
+            this.Hide();
         }
 
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)

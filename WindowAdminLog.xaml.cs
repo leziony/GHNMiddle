@@ -37,6 +37,8 @@ namespace GHNMiddle
             else
             {
                 MessageBox.Show("Nieprawidłowe dane");
+                Application.Current.MainWindow.Show();
+                this.Close();
             }
 
 

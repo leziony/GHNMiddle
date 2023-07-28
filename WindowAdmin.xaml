@@ -9,6 +9,7 @@
         Title="WindowAdmin" Height="450" Width="700">
     <Grid>
         <ComboBox x:Name="selectDatabase" HorizontalAlignment="Left" Margin="39,217,0,0" VerticalAlignment="Top" Width="120" SelectionChanged="ComboBox_SelectionChanged"/>
+        <DataGrid x:Name="grinder" ItemsSource="{Binding}" Margin="0,258,0,0"/>
 
     </Grid>
 </Window>
