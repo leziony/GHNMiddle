@@ -8,7 +8,7 @@
         Title="WindowAdminAddMod" Height="390" Width="412">
     <Grid>
         <TabControl>
-            <TabItem Header="Dla Taryf">
+            <TabItem x:Name="tarrifTab" Header="Dla Taryf">
                 <Grid Background="#FFE5E5E5">
                     <TextBox HorizontalAlignment="Center" Margin="0,37,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
                     <TextBox HorizontalAlignment="Center" Margin="0,157,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
@@ -17,14 +17,14 @@
                     <TextBlock HorizontalAlignment="Center" Margin="0,110,0,0" TextWrapping="Wrap" VerticalAlignment="Top"><Run Language="pl-pl" Text="Podaj cene"/></TextBlock>
                 </Grid>
             </TabItem>
-            <TabItem Header="Dla Rabatów">
+            <TabItem x:Name="discountTab" Header="Dla Rabatów">
                 <Grid Background="#FFE5E5E5">
-                    <TextBox HorizontalAlignment="Center" Margin="0,51,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
+                    <TextBox x:Name="discountName" HorizontalAlignment="Center" Margin="0,51,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
                     <TextBlock HorizontalAlignment="Center" Margin="0,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top"><Run Language="pl-pl" Text="Podaj kod rabatu"/></TextBlock>
                     <TextBlock HorizontalAlignment="Left" Margin="152,122,0,0" TextWrapping="Wrap" VerticalAlignment="Top"><Run Language="pl-pl" Text="Podaj wartość rabatu"/></TextBlock>
-                    <TextBox HorizontalAlignment="Center" Margin="0,157,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
-                    <Button Content="Button" HorizontalAlignment="Center" Margin="0,262,0,0" VerticalAlignment="Top"/>
-                    <CheckBox Content="Wartośc jest procentem" HorizontalAlignment="Center" Margin="0,220,0,0" VerticalAlignment="Top" />
+                    <TextBox x:Name="discountValue" HorizontalAlignment="Center" Margin="0,157,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
+                    <Button x:Name="discountSend" Content="Wyślij" HorizontalAlignment="Center" Margin="0,262,0,0" VerticalAlignment="Top"/>
+                    <CheckBox x:Name="discountPercent" Content="Wartośc jest procentem" HorizontalAlignment="Center" Margin="0,220,0,0" VerticalAlignment="Top" />
                 </Grid>
             </TabItem>
         </TabControl>

@@ -19,9 +19,21 @@ namespace GHNMiddle
     /// </summary>
     public partial class WindowAdminAddMod : Window
     {
+        string modifyID;
+        bool isDiscount;
+        public void modifyValues()
+        {
+
+        }
         public WindowAdminAddMod()
         {
             InitializeComponent();
+        }
+        public WindowAdminAddMod(string modifyID, bool isDiscount)
+        {
+            this.modifyID = modifyID;
+            InitializeComponent();
+            modifyValues();
         }
 
     }
