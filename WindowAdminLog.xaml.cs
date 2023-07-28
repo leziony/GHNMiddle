@@ -22,17 +22,24 @@ namespace GHNMiddle
         public WindowAdminLog()
         {
             InitializeComponent();
+            MessageBox.Show("Funkcja w testach. \n Użyj nazwy i hasła test by zalogować się.", "Testy");
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            var test = MessageBox.Show("Funkcja w testach. \n Czy chcesz sprawdzić czy to działa?","Testy",MessageBoxButton.YesNo,MessageBoxImage.Question);
-            if (test == MessageBoxResult.Yes)
-        {
-                MessageBox.Show(login.Text + " " + password.Text,"Testy");
+            //var test = MessageBox.Show("Funkcja w testach. \n Czy chcesz sprawdzić czy to działa?","Testy",MessageBoxButton.YesNo,MessageBoxImage.Question);
+            if ( login.Text == "Test" && password.Text == "Test")
+            {
+                WindowAdmin a = new WindowAdmin();
+                a.Show();
+                this.Close();
+            }
+            else
+            {
+                MessageBox.Show("Nieprawidłowe dane");
             }
 
-            this.Close();
+
         }
     }
 }

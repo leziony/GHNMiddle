@@ -34,12 +34,12 @@ namespace GHNMiddle
                 selectDatabase.Items.Add(dr.GetString(0));
             }
             conn.conn.Close();
-            currentBase = selectDatabase.SelectedItem.ToString();
             
         }
         public WindowAdmin()
         {
             InitializeComponent();
+            DatabasePull();
         }
 
         private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
