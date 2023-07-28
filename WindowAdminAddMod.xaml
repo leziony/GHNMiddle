@@ -1,0 +1,32 @@
+﻿<Window x:Class="GHNMiddle.WindowAdminAddMod"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:GHNMiddle"
+        mc:Ignorable="d"
+        Title="WindowAdminAddMod" Height="390" Width="412">
+    <Grid>
+        <TabControl>
+            <TabItem Header="Dla Taryf">
+                <Grid Background="#FFE5E5E5">
+                    <TextBox HorizontalAlignment="Center" Margin="0,37,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
+                    <TextBox HorizontalAlignment="Center" Margin="0,157,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
+                    <Button Content="Wyślij" HorizontalAlignment="Center" Margin="0,277,0,0" VerticalAlignment="Top"/>
+                    <TextBlock HorizontalAlignment="Center" Margin="0,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top"><Run Language="pl-pl" Text="Podaj kod Taryfy"/></TextBlock>
+                    <TextBlock HorizontalAlignment="Center" Margin="0,110,0,0" TextWrapping="Wrap" VerticalAlignment="Top"><Run Language="pl-pl" Text="Podaj cene"/></TextBlock>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Dla Rabatów">
+                <Grid Background="#FFE5E5E5">
+                    <TextBox HorizontalAlignment="Center" Margin="0,51,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
+                    <TextBlock HorizontalAlignment="Center" Margin="0,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top"><Run Language="pl-pl" Text="Podaj kod rabatu"/></TextBlock>
+                    <TextBlock HorizontalAlignment="Left" Margin="152,122,0,0" TextWrapping="Wrap" VerticalAlignment="Top"><Run Language="pl-pl" Text="Podaj wartość rabatu"/></TextBlock>
+                    <TextBox HorizontalAlignment="Center" Margin="0,157,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
+                    <Button Content="Button" HorizontalAlignment="Center" Margin="0,262,0,0" VerticalAlignment="Top"/>
+                    <CheckBox Content="Wartośc jest procentem" HorizontalAlignment="Center" Margin="0,220,0,0" VerticalAlignment="Top" />
+                </Grid>
+            </TabItem>
+        </TabControl>
+    </Grid>
+</Window>

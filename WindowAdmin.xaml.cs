@@ -66,5 +66,10 @@ namespace GHNMiddle
             conn.Close();
             Application.Current.MainWindow.Show();
         }
+
+        private void Add_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
