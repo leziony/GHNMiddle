@@ -100,5 +100,10 @@ namespace GHNMiddle
 
         }
 
+        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            connect.conn.Dispose();
+            connect.Close();
+        }
     }
 }
