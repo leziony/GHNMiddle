@@ -39,26 +39,41 @@ namespace GHNMiddle
                 if (isDiscount == true)
                 {
                     sql = "SELECT * FROM discounts WHERE discount_code = ?value LIMIT 1";
+                    MySqlCommand cmd = new MySqlCommand(sql,connect.conn);
+                    cmd.Parameters.Add(new MySqlParameter("value", modifyID));
+                    discountTab.Focus();
+                    MySqlDataReader rd = cmd.ExecuteReader();  
+                    rd.Read();
+                    discountName.Text = rd["discount_code"].ToString();
+                    discountValue.Text = rd["discount_value"].ToString();
+                    if (rd["is_percent"].ToString()=="1")
+                    {
+                        discountPercent.IsChecked = true;
+                    }
+                    else
+                    {
+                        discountPercent.IsChecked = false;
+                    }    
+
+
                 }
                 else if (isUser == true)
                 {
                     sql = "SELECT * FROM users WHERE ID = ?value";
+                    MySqlCommand cmd = new MySqlCommand(sql, connect.conn);
+                    cmd.Parameters.Add(new MySqlParameter("value", modifyID));
+                    usersTab.Focus();
+                    MySqlDataReader rd = cmd.ExecuteReader();
+                    rd.Read();
+                    userID.Text = rd["ID"].ToString();
+                    userFirst.Text = rd["imie"].ToString();
+                    userLast.Text = rd["nazwisko"].ToString();
+                    userPass.Text = rd["Password"].ToString();
                 }
                 else
                 {
                     sql = "SELECT * FROM tarrif_code WHERE tarrifID = ?value";
                 }
-                MySqlCommand cmd = new MySqlCommand(sql, connect.conn);
-                if (isUser == true)
-                {
-                    cmd.Parameters.Add(new MySqlParameter("value", int.Parse(modifyID)));
-                }
-                else
-                {
-                    cmd.Parameters.Add(new MySqlParameter("value", modifyID));
-                }
-                MySqlDataReader rd = cmd.ExecuteReader();
-                rd.Read();
 
 
             }
