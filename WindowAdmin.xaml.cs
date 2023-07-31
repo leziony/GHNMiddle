@@ -69,7 +69,8 @@ namespace GHNMiddle
 
         private void Add_Click(object sender, RoutedEventArgs e)
         {
-
+            WindowAdminAddMod a = new WindowAdminAddMod();
+            a.Show();
         }
     }
 }

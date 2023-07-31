@@ -27,6 +27,18 @@
                     <CheckBox x:Name="discountPercent" Content="Wartośc jest procentem" HorizontalAlignment="Center" Margin="0,220,0,0" VerticalAlignment="Top" />
                 </Grid>
             </TabItem>
+            <TabItem x:Name="usersTab" Header="Dla Użytkowników">
+                <Grid Background="#FFE5E5E5">
+                    <Button Content="Wyślij" HorizontalAlignment="Left" Margin="189,247,0,0" VerticalAlignment="Top"/>
+                    <TextBlock HorizontalAlignment="Left" Margin="174,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top"><Run Language="pl-pl" Text="Podaj user ID"/></TextBlock>
+                    <TextBox HorizontalAlignment="Left" Margin="146,47,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
+                    <TextBlock HorizontalAlignment="Left" Margin="162,84,0,0" TextWrapping="Wrap" VerticalAlignment="Top"><Run Language="pl-pl" Text="Podaj nowe Imie"/></TextBlock>
+                    <TextBox HorizontalAlignment="Left" Margin="146,122,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
+                    <TextBlock HorizontalAlignment="Left" Margin="153,157,0,0" TextWrapping="Wrap" VerticalAlignment="Top"><Run Language="pl-pl" Text="Podaj nowe nazwisko"/></TextBlock>
+                    <TextBox HorizontalAlignment="Left" Margin="149,196,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
+
+                </Grid>
+            </TabItem>
         </TabControl>
     </Grid>
 </Window>
