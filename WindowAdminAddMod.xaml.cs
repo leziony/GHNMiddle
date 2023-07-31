@@ -36,6 +36,7 @@ namespace GHNMiddle
             {
                 connect.connectsql("server=localhost;uid=root;pwd=admin;database=ghndata;");
                 string sql;
+                connect.conn.Open();
                 if (isDiscount == true)
                 {
                     sql = "SELECT * FROM discounts WHERE discount_code = ?value LIMIT 1";
@@ -81,7 +82,7 @@ namespace GHNMiddle
                     tarrifCode.Text = rd["tarrifID"].ToString();
                     tarrifCost.Text = rd["cost"].ToString();
                 }
-
+                connect.conn.Close();
 
             }
         }

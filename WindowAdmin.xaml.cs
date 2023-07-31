@@ -72,5 +72,29 @@ namespace GHNMiddle
             WindowAdminAddMod a = new WindowAdminAddMod();
             a.Show();
         }
+
+        private void Modify_Click(object sender, RoutedEventArgs e)
+        {
+            WindowAdminAddMod b;
+            if (selectDatabase.SelectedItem.ToString() == "tarrif_code")
+            {
+                b = new WindowAdminAddMod(modID.Text, false, false);
+                b.Show();
+            }
+            else if (selectDatabase.SelectedItem.ToString() == "discounts")
+            {
+                b = new WindowAdminAddMod(modID.Text, true, false);
+                b.Show();
+            }
+            else if (selectDatabase.SelectedItem.ToString() == "users")
+            {
+                b= new WindowAdminAddMod(modID.Text,false, true);
+                b.Show();
+            }
+            else
+            {
+                MessageBox.Show("Nonmodifiable table.");
+            }
+        }
     }
 }
