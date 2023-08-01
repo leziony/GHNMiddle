@@ -96,6 +96,18 @@ namespace GHNMiddle
             MessageBox.Show("created");
             this.Close();
         }
+        public void addDiscount(decimal value, short percent)
+        {
+            string sql = "INSERT INTO discounts VALUES (?t1,?t2,?t3)";
+            connect.conn.Open();
+            MySqlCommand cmd = new MySqlCommand(sql, connect.conn);
+            cmd.Parameters.Add(new MySqlParameter("t1", discountName.Text));
+            cmd.Parameters.Add(new MySqlParameter("t2", percent));
+            cmd.Parameters.Add(new MySqlParameter("t3", value));
+            cmd.ExecuteNonQuery();
+            MessageBox.Show("created");
+            this.Close();
+        }
         public WindowAdminAddMod()
         {
             InitializeComponent();
@@ -141,6 +153,41 @@ namespace GHNMiddle
             else
             {
                 addTarrif(cena);
+            }
+        }
+
+        private void discountSend_Click(object sender, RoutedEventArgs e)
+        {
+            decimal value = decimal.Parse(discountName.Text);
+            short percent;
+            if(discountPercent.IsChecked == false)
+            {
+                percent = 0;
+            }
+            else
+            { percent = 1; }
+            if (modifyID != "")
+            {
+                string sql = "UPDATE discount SET discount_code = ?t1, is_percent = ?t2, discount_value= ?t3 WHERE discount_code = ?asd";
+                connect.conn.Open();
+                MySqlCommand cmd = new MySqlCommand(sql, connect.conn);
+                cmd.Parameters.Add(new MySqlParameter("t1", discountName.Text));
+                cmd.Parameters.Add(new MySqlParameter("t2", percent));
+                cmd.Parameters.Add(new MySqlParameter("t3", value));
+                cmd.Parameters.Add(new MySqlParameter("asd", modifyID));
+                if ((int)cmd.ExecuteNonQuery() > 0)
+                {
+                    MessageBox.Show("Updated");
+                    this.Close();
+                }
+                else
+                {
+                    addDiscount(value,percent);
+                }
+            }
+            else
+            {
+                addDiscount(value,percent);
             }
         }
     }
