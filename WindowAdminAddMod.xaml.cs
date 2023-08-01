@@ -108,6 +108,17 @@ namespace GHNMiddle
             MessageBox.Show("created");
             this.Close();
         }
+        public void addUser()
+        {
+            string sql = "INSERT INTO users(imie,nazwisko,password) VALUES (?t1,?t2,?t3)";
+            connect.conn.Open();
+            MySqlCommand cmd = new MySqlCommand(sql,connect.conn); 
+            cmd.Parameters.Add(new MySqlParameter("t1",userFirst.Text));
+            cmd.Parameters.Add(new MySqlParameter("t2",userLast.Text));
+            cmd.Parameters.Add(new MySqlParameter("t3",userPass.Text));
+            cmd.ExecuteNonQuery();
+            this.Close();
+        }
         public WindowAdminAddMod()
         {
             InitializeComponent();
@@ -193,7 +204,38 @@ namespace GHNMiddle
 
         private void User_Click(object sender, RoutedEventArgs e)
         {
+            int id = -1;
+            if (userID.Text != "")
+            {
+                id = int.Parse(userID.Text);
+            }
+            if (modifyID != "")
+            {
+                string sql = "UPDATE users SET ID = ?t1, imie = ?t2, nazwisko = ?t3, password = ?t4 WHERE ID=?asd";
+                connect.conn.Open();
+                MySqlCommand cmd = new MySqlCommand(sql, connect.conn);
+                cmd.Parameters.Add(new MySqlParameter("t1", id));
+                cmd.Parameters.Add(new MySqlParameter("t2", userFirst.Text));
+                cmd.Parameters.Add(new MySqlParameter("t3",userLast.Text));
+                cmd.Parameters.Add(new MySqlParameter("t4",userPass.Text));
+                cmd.Parameters.Add(new MySqlParameter("asd", modifyID));
+                if ((int)cmd.ExecuteNonQuery() > 0)
+                {
+                    MessageBox.Show("Updated");
+                    this.Close();
+                }
+                else
+                {
 
+                   addUser();
+    
+                }
+            }
+            else
+            {
+                addUser();
+            }
         }
     }
+    
 }
