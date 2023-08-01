@@ -190,5 +190,10 @@ namespace GHNMiddle
                 addDiscount(value,percent);
             }
         }
+
+        private void User_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
