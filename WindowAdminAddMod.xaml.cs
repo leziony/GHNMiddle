@@ -89,6 +89,7 @@ namespace GHNMiddle
         public WindowAdminAddMod()
         {
             InitializeComponent();
+            connect.connectsql("server=localhost;uid=root;pwd=admin;database=ghndata;");
         }
         public WindowAdminAddMod(string modifyID, bool isDiscount , bool isUser)
         {
@@ -104,6 +105,30 @@ namespace GHNMiddle
         {
             connect.conn.Dispose();
             connect.Close();
+        }
+
+        private void tarrifButton_Click(object sender, RoutedEventArgs e)
+        {
+            decimal cena = decimal.Parse(tarrifCost.Text);
+            if (modifyID != "")
+            {
+                string sql = "UPDATE tarrif_code SET tarrifID = ?t1, cost = ?t2 WHERE tarrifID=?asd";
+                connect.conn.Open();
+                MySqlCommand cmd = new MySqlCommand(sql, connect.conn);
+                cmd.Parameters.Add(new MySqlParameter("t1", tarrifCode.Text));
+                cmd.Parameters.Add(new MySqlParameter("t2", cena));
+                cmd.Parameters.Add(new MySqlParameter("asd", modifyID));
+                if((int)cmd.ExecuteNonQuery() > 0)
+                {
+                    MessageBox.Show("Updated");
+                    this.Close();
+                }
+                else
+                {
+                    MessageBox.Show("failed");
+                    this.Close();
+                }
+            }
         }
     }
 }
