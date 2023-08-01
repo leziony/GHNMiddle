@@ -20,6 +20,7 @@ namespace GHNMiddle
     /// </summary>
     public partial class WindowAdminAddMod : Window
     {
+        bool launched = false;
         string modifyID ="";
         bool isDiscount;
         bool isUser;
@@ -43,18 +44,26 @@ namespace GHNMiddle
                     MySqlCommand cmd = new MySqlCommand(sql,connect.conn);
                     cmd.Parameters.Add(new MySqlParameter("value", modifyID));
                     discountTab.Focus();
-                    MySqlDataReader rd = cmd.ExecuteReader();  
-                    rd.Read();
-                    discountName.Text = rd["discount_code"].ToString();
-                    discountValue.Text = rd["discount_value"].ToString();
-                    if (rd["is_percent"].ToString()=="1")
+                    MySqlDataReader rd = cmd.ExecuteReader();
+                    if (rd.HasRows)
                     {
-                        discountPercent.IsChecked = true;
+                        rd.Read();
+                        discountName.Text = rd["discount_code"].ToString();
+                        discountValue.Text = rd["discount_value"].ToString();
+                        if (rd["is_percent"].ToString() == "1")
+                        {
+                            discountPercent.IsChecked = true;
+                        }
+                        else
+                        {
+                            discountPercent.IsChecked = false;
+                        }
                     }
                     else
                     {
-                        discountPercent.IsChecked = false;
-                    }    
+                        MessageBox.Show("FAIL");
+                        return;
+                    }
 
 
                 }
@@ -65,11 +74,19 @@ namespace GHNMiddle
                     cmd.Parameters.Add(new MySqlParameter("value", modifyID));
                     usersTab.Focus();
                     MySqlDataReader rd = cmd.ExecuteReader();
-                    rd.Read();
-                    userID.Text = rd["ID"].ToString();
-                    userFirst.Text = rd["imie"].ToString();
-                    userLast.Text = rd["nazwisko"].ToString();
-                    userPass.Text = rd["Password"].ToString();
+                    if (rd.HasRows)
+                    {
+                        rd.Read();
+                        userID.Text = rd["ID"].ToString();
+                        userFirst.Text = rd["imie"].ToString();
+                        userLast.Text = rd["nazwisko"].ToString();
+                        userPass.Text = rd["Password"].ToString();
+                    }
+                    else
+                    {
+                        MessageBox.Show("FAIL");
+                        return;
+                    }
                 }
                 else
                 {
@@ -78,11 +95,20 @@ namespace GHNMiddle
                     cmd.Parameters.Add(new MySqlParameter("value", modifyID));
                     tarrifTab.Focus();
                     MySqlDataReader rd = cmd.ExecuteReader();
-                    rd.Read();
-                    tarrifCode.Text = rd["tarrifID"].ToString();
-                    tarrifCost.Text = rd["cost"].ToString();
+                    if (rd.HasRows)
+                    {
+                        rd.Read();
+                        tarrifCode.Text = rd["tarrifID"].ToString();
+                        tarrifCost.Text = rd["cost"].ToString();
+                    }
+                    else
+                    {
+                        MessageBox.Show("FAIL");
+                        return;
+                    }
                 }
                 connect.conn.Close();
+                launched = true;
 
             }
         }
@@ -123,6 +149,8 @@ namespace GHNMiddle
         {
             InitializeComponent();
             connect.connectsql("server=localhost;uid=root;pwd=admin;database=ghndata;");
+            launched = true;
+            this.Show();
         }
         public WindowAdminAddMod(string modifyID, bool isDiscount , bool isUser)
         {
@@ -131,12 +159,14 @@ namespace GHNMiddle
             this.isUser = isUser;
             InitializeComponent();
             modifyValues();
-
         }
 
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
-            connect.conn.Dispose();
+            if (launched == true)
+            {
+                connect.conn.Dispose();
+            }
             connect.Close();
         }
 
@@ -169,7 +199,7 @@ namespace GHNMiddle
 
         private void discountSend_Click(object sender, RoutedEventArgs e)
         {
-            decimal value = decimal.Parse(discountName.Text);
+            decimal value = Convert.ToDecimal(discountValue.Text);
             short percent;
             if(discountPercent.IsChecked == false)
             {
@@ -179,7 +209,7 @@ namespace GHNMiddle
             { percent = 1; }
             if (modifyID != "")
             {
-                string sql = "UPDATE discount SET discount_code = ?t1, is_percent = ?t2, discount_value= ?t3 WHERE discount_code = ?asd";
+                string sql = "UPDATE discounts SET discount_code = ?t1, is_percent = ?t2, discount_value= ?t3 WHERE discount_code = ?asd";
                 connect.conn.Open();
                 MySqlCommand cmd = new MySqlCommand(sql, connect.conn);
                 cmd.Parameters.Add(new MySqlParameter("t1", discountName.Text));
@@ -234,6 +264,14 @@ namespace GHNMiddle
             else
             {
                 addUser();
+            }
+        }
+
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            if(launched == false)
+            {
+                this.Close();
             }
         }
     }
