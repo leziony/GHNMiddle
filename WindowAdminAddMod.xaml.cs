@@ -86,6 +86,16 @@ namespace GHNMiddle
 
             }
         }
+        public void addTarrif(decimal cena)
+        {
+            string sql = "INSERT INTO tarrif_code VALUES (?t1,?t2)";
+            MySqlCommand cmd = new MySqlCommand( sql, connect.conn);
+            cmd.Parameters.Add(new MySqlParameter("t1",tarrifCode.Text));
+            cmd.Parameters.Add(new MySqlParameter("t2", cena));
+            cmd.ExecuteNonQuery();
+            MessageBox.Show("created");
+            this.Close();
+        }
         public WindowAdminAddMod()
         {
             InitializeComponent();
@@ -125,9 +135,12 @@ namespace GHNMiddle
                 }
                 else
                 {
-                    MessageBox.Show("failed");
-                    this.Close();
+                    addTarrif(cena);
                 }
+            }
+            else
+            {
+                addTarrif(cena);
             }
         }
     }
