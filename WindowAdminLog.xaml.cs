@@ -28,6 +28,7 @@ namespace GHNMiddle
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             //var test = MessageBox.Show("Funkcja w testach. \n Czy chcesz sprawdzić czy to działa?","Testy",MessageBoxButton.YesNo,MessageBoxImage.Question);
+            //komentarz do usuniecia
             if ( login.Text == "Test" && password.Text == "Test")
             {
                 WindowAdmin a = new WindowAdmin();
