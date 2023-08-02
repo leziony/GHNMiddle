@@ -22,7 +22,7 @@ namespace GHNMiddle
     public partial class WindowAdmin : Window
     {
         MainWindow conn = new MainWindow();
-        string currentBase;
+        string currentBase = "";
         public void DatabasePull()
         {
             conn.connectsql("server=localhost;uid=root;pwd=admin;database=ghndata;");
@@ -99,7 +99,10 @@ namespace GHNMiddle
 
         private void Window_Activated(object sender, EventArgs e)
         {
-            TableInit();
+            if (currentBase != "")
+            {
+                TableInit();
+            }
         }
     }
 }

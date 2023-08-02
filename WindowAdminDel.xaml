@@ -5,9 +5,10 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:GHNMiddle"
         mc:Ignorable="d"
+        Closing="Window_Closing"
         Title="WindowAdminDel" Height="250" Width="200">
     <Grid>
-        <Button x:Name="deleteButton" Content="Wyślij" HorizontalAlignment="Center" Margin="0,181,0,0" VerticalAlignment="Top"/>
+        <Button x:Name="deleteButton" Content="Wyślij" HorizontalAlignment="Center" Margin="0,181,0,0" VerticalAlignment="Top" Click="deleteButton_Click"/>
         <TextBlock HorizontalAlignment="Center" Margin="0,38,0,0" TextWrapping="Wrap" VerticalAlignment="Top"><Run Language="pl-pl" Text="Podaj ID rekordu do usunięcia"/></TextBlock>
         <TextBox x:Name="deleteID" HorizontalAlignment="Center" Margin="0,90,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
 
