@@ -15,7 +15,7 @@
         <Button x:Name="Remove" Content="Usuń" HorizontalAlignment="Left" Margin="175,125,0,0" VerticalAlignment="Top" Click="Remove_Click"/>
         <Button x:Name="Modify" Content="Zmodyfikuj" HorizontalAlignment="Left" Margin="325,77,0,0" VerticalAlignment="Top" Click="Modify_Click"/>
         <TextBlock HorizontalAlignment="Left" Margin="445,129,0,0" TextWrapping="Wrap" VerticalAlignment="Top"><Run Text="Baza Dan"/><Run Language="pl-pl" Text="y"/><Run Text="ch:"/></TextBlock>
-        <TextBlock HorizontalAlignment="Center" Margin="0,28,0,0" TextWrapping="Wrap" VerticalAlignment="Top"><Run Text="Witamy w systemie"/><Run Language="pl-pl" Text=" Admina"/></TextBlock>
+        <TextBlock HorizontalAlignment="Center" Margin="0,28,0,0" TextWrapping="Wrap" VerticalAlignment="Top"><Run Text="Witamy w systemie Admina"/><Run Language="pl-pl"/></TextBlock>
         <TextBox x:Name="modID" TextWrapping="Wrap" Text="" Margin="340,117,312,197"/>
         <TextBlock HorizontalAlignment="Left" Margin="299,126,0,0" TextWrapping="Wrap" VerticalAlignment="Top"><Run Language="pl-pl" Text="Kod:"/></TextBlock>
 
