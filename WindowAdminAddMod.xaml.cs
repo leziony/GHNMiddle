@@ -77,7 +77,6 @@ namespace GHNMiddle
                     if (rd.HasRows)
                     {
                         rd.Read();
-                        userID.Text = rd["ID"].ToString();
                         userFirst.Text = rd["imie"].ToString();
                         userLast.Text = rd["nazwisko"].ToString();
                         userPass.Text = rd["Password"].ToString();
@@ -235,12 +234,9 @@ namespace GHNMiddle
         private void User_Click(object sender, RoutedEventArgs e)
         {
             int id = -1;
-            if (userID.Text != "")
-            {
-                id = int.Parse(userID.Text);
-            }
             if (modifyID != "")
             {
+                id = int.Parse(modifyID.ToString());
                 string sql = "UPDATE users SET ID = ?t1, imie = ?t2, nazwisko = ?t3, password = ?t4 WHERE ID=?asd";
                 connect.conn.Open();
                 MySqlCommand cmd = new MySqlCommand(sql, connect.conn);
