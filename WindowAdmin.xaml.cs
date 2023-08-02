@@ -104,5 +104,11 @@ namespace GHNMiddle
                 TableInit();
             }
         }
+
+        private void Remove_Click(object sender, RoutedEventArgs e)
+        {
+            WindowAdminDel a = new WindowAdminDel(currentBase.ToString());
+            a.Show();
+        }
     }
 }

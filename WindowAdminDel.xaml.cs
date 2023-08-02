@@ -28,12 +28,6 @@ namespace GHNMiddle
             InitializeComponent();
             this.database = database;
         }
-        public WindowAdminDel(string name,string database)
-        {
-            InitializeComponent();
-            deleteID.Text = name;
-            this.database = database;
-        }
 
         private void deleteButton_Click(object sender, RoutedEventArgs e)
         {

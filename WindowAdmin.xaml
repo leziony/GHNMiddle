@@ -12,7 +12,7 @@
         <ComboBox x:Name="selectDatabase" HorizontalAlignment="Left" Margin="542,126,0,0" VerticalAlignment="Top" Width="120" SelectionChanged="ComboBox_SelectionChanged"/>
         <DataGrid x:Name="grinder" ItemsSource="{Binding}" Margin="136,167,0,0" IsReadOnly="True"/>
         <Button x:Name="Add" Content="Dodaj" HorizontalAlignment="Left" Margin="48,0,0,0" VerticalAlignment="Center" Click="Add_Click"/>
-        <Button x:Name="Remove" Content="Usuń" HorizontalAlignment="Left" Margin="50,211,0,0" VerticalAlignment="Top"/>
+        <Button x:Name="Remove" Content="Usuń" HorizontalAlignment="Left" Margin="50,211,0,0" VerticalAlignment="Top" Click="Remove_Click"/>
         <Button x:Name="Modify" Content="Zmodyfikuj" HorizontalAlignment="Left" Margin="34,251,0,0" VerticalAlignment="Top" Click="Modify_Click"/>
         <TextBlock HorizontalAlignment="Left" Margin="445,129,0,0" TextWrapping="Wrap" VerticalAlignment="Top"><Run Text="Baza Dan"/><Run Language="pl-pl" Text="y"/><Run Text="ch:"/></TextBlock>
         <TextBlock HorizontalAlignment="Center" Margin="0,28,0,0" TextWrapping="Wrap" VerticalAlignment="Top"><Run Language="pl-pl" Text="Witamy w systemie"/></TextBlock>
