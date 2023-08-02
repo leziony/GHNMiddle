@@ -107,8 +107,16 @@ namespace GHNMiddle
 
         private void Remove_Click(object sender, RoutedEventArgs e)
         {
-            WindowAdminDel a = new WindowAdminDel(currentBase.ToString());
-            a.Show();
+            if(selectDatabase.SelectedItem.ToString() == "tarrif_code" || selectDatabase.SelectedItem.ToString() == "discounts" || selectDatabase.SelectedItem.ToString() == "users")
+            {
+                WindowAdminDel a = new WindowAdminDel(currentBase.ToString());
+                a.Show();
+            }
+            else
+            {
+                MessageBox.Show("Nonmodifiable table.");
+            }
+
         }
     }
 }
