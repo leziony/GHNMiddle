@@ -96,5 +96,10 @@ namespace GHNMiddle
                 MessageBox.Show("Nonmodifiable table.");
             }
         }
+
+        private void Window_Activated(object sender, EventArgs e)
+        {
+            TableInit();
+        }
     }
 }

@@ -23,5 +23,10 @@ namespace GHNMiddle
         {
             InitializeComponent();
         }
+        public WindowAdminDel(string name)
+        {
+            InitializeComponent();
+            deleteID.Text = name;
+        }
     }
 }
