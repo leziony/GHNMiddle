@@ -59,11 +59,15 @@ namespace GHNMiddle
                 {
                     WindowAdmin a = new WindowAdmin();
                     a.Show();
+                    conn.conn.Dispose();
+                    conn.Close();
                     this.Close();
                 }
                 else
                 {
                     MessageBox.Show("Nieprawidłowe dane");
+                    conn.conn.Dispose();
+                    conn.Close();
                     Application.Current.MainWindow.Show();
                     this.Close();
 
@@ -74,6 +78,8 @@ namespace GHNMiddle
             {
                 MessageBox.Show("Nieprawidłowe dane");
                 Application.Current.MainWindow.Show();
+                conn.conn.Dispose();
+                conn.Close();
                 this.Close();
             }
 
