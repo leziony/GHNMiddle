@@ -7,11 +7,9 @@
         mc:Ignorable="d"
         Title="WindowAdminLog" Height="300" Width="200">
     <Grid>
-        <TextBlock HorizontalAlignment="Center" Margin="0,44,0,0" TextWrapping="Wrap" VerticalAlignment="Top"><Run Language="pl-pl" Text="Login"/></TextBlock>
-        <TextBox x:Name="login" HorizontalAlignment="Center" Margin="0,65,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
-        <TextBlock HorizontalAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Center"><Run Language="pl-pl" Text="Hasło"/></TextBlock>
-        <TextBox x:Name="password" HorizontalAlignment="Center" Margin="0,155,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
+        <TextBlock HorizontalAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Top" Margin="0,68,0,0"><Run Text="Hasło"/><Run Language="pl-pl" Text=" do systemu"/></TextBlock>
+        <TextBox x:Name="password" HorizontalAlignment="Center" Margin="0,105,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
         <Button x:Name="button" Content="Loguj" HorizontalAlignment="Center" Margin="0,215,0,0" VerticalAlignment="Top" Click="Button_Click"/>
-        
+
     </Grid>
 </Window>
