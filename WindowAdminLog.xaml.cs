@@ -24,7 +24,6 @@ namespace GHNMiddle
         public WindowAdminLog()
         {
             InitializeComponent();
-            MessageBox.Show("Funkcja w testach. \n Użyj nazwy i hasła test by zalogować się.", "Testy");
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
