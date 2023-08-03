@@ -34,14 +34,15 @@
         <TextBlock HorizontalAlignment="Left" Margin="668,141,0,0" TextWrapping="Wrap" VerticalAlignment="Top"><Run Language="pl-pl" Text="Kod Kraju"/></TextBlock>
         <GridSplitter HorizontalAlignment="Center" Height="0" VerticalAlignment="Center" Width="800"/>
         <DataGrid x:Name="Table" Margin="0,217,10,0" ItemsSource="{Binding}" IsReadOnly="True"/>
-        <Button Content="Wczytaj taryfy" HorizontalAlignment="Left" Margin="68,187,0,0" VerticalAlignment="Top" Click="ButtonLoadTarrif_Click"/>
+        <Button Content="Wczytaj taryfy" HorizontalAlignment="Left" Margin="47,191,0,0" VerticalAlignment="Top" Click="ButtonLoadTarrif_Click"/>
         <TextBlock HorizontalAlignment="Left" Margin="569,175,0,0" TextWrapping="Wrap" VerticalAlignment="Top"><Run Language="pl-pl" Text="Cena:"/></TextBlock>
         <TextBlock x:Name="Cost" HorizontalAlignment="Left" Margin="632,175,0,0" TextWrapping="Wrap" VerticalAlignment="Top"><Run Language="pl-pl" Text="N/A"/></TextBlock>
         <Button x:Name="CostButton" Content="Wylicz" HorizontalAlignment="Left" Margin="714,172,0,0" VerticalAlignment="Top" Click="ButtonCost_Click"/>
         <TextBlock HorizontalAlignment="Left" Margin="524,198,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="96"><Run Text="Zniżka ogólna"/><Run Text="(%):"/></TextBlock>
         <TextBox x:Name="Discount" HorizontalAlignment="Left" Margin="628,198,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="50" TextChanged="DiscountTextBox_TextChanged" KeyDown="Discount_KeyDown" />
-        <Button x:Name="discountButton" Content="Zniżka na taryfe" HorizontalAlignment="Left" Margin="218,187,0,0" VerticalAlignment="Top" Click="ButtonDiscount_Click"/>
-        <Button x:Name="recoveryButton" Content="Odzyskaj dane" HorizontalAlignment="Left" Margin="365,187,0,0" VerticalAlignment="Top" Width="85" Click="ButtonRecover_Click"/>
+        <Button x:Name="discountButton" Content="Zniżka na taryfe" HorizontalAlignment="Left" Margin="262,191,0,0" VerticalAlignment="Top" Click="ButtonDiscount_Click"/>
+        <Button x:Name="recoveryButton" Content="Odzyskaj dane" HorizontalAlignment="Left" Margin="398,191,0,0" VerticalAlignment="Top" Width="85" Click="ButtonRecover_Click"/>
         <Button x:Name="exportButton" Content="Exportuj Dane" HorizontalAlignment="Left" Margin="691,198,0,0" VerticalAlignment="Top" Click="ButtonExport_Click"/>
+        <Button x:Name="editButton" Content="Zmień taryfe" HorizontalAlignment="Left" Margin="150,191,0,0" VerticalAlignment="Top"/>
     </Grid>
 </Window>

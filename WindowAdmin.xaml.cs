@@ -76,7 +76,11 @@ namespace GHNMiddle
         private void Modify_Click(object sender, RoutedEventArgs e)
         {
             WindowAdminAddMod b;
-            if (selectDatabase.SelectedItem.ToString() == "tarrif_code")
+            if (selectDatabase.SelectedItem == null)
+            {
+                MessageBox.Show("Please select database");
+            }
+            else if (selectDatabase.SelectedItem.ToString() == "tarrif_code")
             {
                 b = new WindowAdminAddMod(modID.Text, false, false);
                 b.Show();
