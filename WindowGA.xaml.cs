@@ -397,5 +397,11 @@ namespace GHNMiddle
             }
 
         }
+
+        private void editButton_Click(object sender, RoutedEventArgs e)
+        {
+            WindowMod test = new WindowMod(windowconnect.id);
+            test.Show();
+        }
     }           
 }

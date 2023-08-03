@@ -5,8 +5,13 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:GHNMiddle"
         mc:Ignorable="d"
-        Title="WindowMod" Height="450" Width="800">
+        Title="WindowMod" Height="275" Width="200">
     <Grid>
-        
+        <TextBox x:Name="oldTarrif" HorizontalAlignment="Center" Margin="0,61,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
+        <TextBlock HorizontalAlignment="Center" Margin="0,40,0,0" TextWrapping="Wrap" VerticalAlignment="Top"><Run Text="Wprowadź taryf"/><Run Language="pl-pl" Text="ę"/><Run Text=" do zmiany"/></TextBlock>
+        <TextBlock HorizontalAlignment="Center" Margin="0,137,0,0" TextWrapping="Wrap" VerticalAlignment="Top"><Run Language="pl-pl" Text="Wprowadź kod nowej taryfy"/></TextBlock>
+        <TextBox x:Name="newTarrif" HorizontalAlignment="Center" Margin="0,153,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
+        <Button Content="Wyślij" HorizontalAlignment="Center" Margin="0,207,0,0" VerticalAlignment="Top" Click="Button_Click"/>
+
     </Grid>
 </Window>

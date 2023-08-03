@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MySqlConnector;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -19,14 +20,26 @@ namespace GHNMiddle
     /// </summary>
     public partial class WindowMod : Window
     {
-        public WindowMod()
+        MainWindow con = new MainWindow();
+        string id;
+        public WindowMod(string id)
         {
             InitializeComponent();
+            this.id = id;
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-
+            con.connectsql("server=localhost;uid=root;pwd=admin;database=ghndata;");
+            con.conn.Open();
+            string sql = "UPDATE " + id + " SET tarrifcode = ?t2 WHERE tarrifcode = ?t1";
+            MySqlCommand cmd = new MySqlCommand(sql,con.conn);
+            cmd.Parameters.Add(new MySqlParameter("t2",newTarrif.Text));
+            cmd.Parameters.Add(new MySqlParameter("t1", oldTarrif.Text));
+            cmd.ExecuteNonQuery();
+            con.conn.Close();
+            con.Close();
+            this.Close();
         }
     }
 }
