@@ -5,8 +5,11 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:GHNMiddle"
         mc:Ignorable="d"
-        Title="WindowHDL24" Height="450" Width="800">
+        Title="WindowHDL24" Height="250" Width="200">
     <Grid>
-        
+        <TextBox HorizontalAlignment="Center" Margin="0,99,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
+        <TextBlock HorizontalAlignment="Center" Margin="0,48,0,0" TextWrapping="Wrap" VerticalAlignment="Top"><Run Text="Podaj cen"/><Run Language="pl-pl" Text="e"/></TextBlock>
+        <Button Content="Wyślij" HorizontalAlignment="Center" Margin="0,168,0,0" VerticalAlignment="Top"/>
+
     </Grid>
 </Window>

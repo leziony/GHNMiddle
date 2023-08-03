@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MySqlConnector;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -19,6 +20,7 @@ namespace GHNMiddle
     /// </summary>
     public partial class WindowAdminLog : Window
     {
+        MainWindow conn = new MainWindow();
         public WindowAdminLog()
         {
             InitializeComponent();
@@ -29,11 +31,44 @@ namespace GHNMiddle
         {
             //var test = MessageBox.Show("Funkcja w testach. \n Czy chcesz sprawdzić czy to działa?","Testy",MessageBoxButton.YesNo,MessageBoxImage.Question);
             //komentarz do usuniecia
-            if ( login.Text == "Test" && password.Text == "Test")
+            /* if ( login.Text == "Test" && password.Text == "Test")
+             {
+                 WindowAdmin a = new WindowAdmin();
+                 a.Show();
+                 this.Close();
+             }
+             else
+             {
+                 MessageBox.Show("Nieprawidłowe dane");
+                 Application.Current.MainWindow.Show();
+                 this.Close();
+             }
+            */
+            conn.connectsql("server=localhost;uid=root;pwd=admin;database=ghndata;");
+            conn.conn.Open();
+            string sql = "SELECT ID FROM users WHERE password=?pap";
+            MySqlCommand cmd = new MySqlCommand(sql, conn.conn);
+            cmd.Parameters.Add(new MySqlParameter("pap", password.Text));
+            int controlID;
+            MySqlDataReader reader = cmd.ExecuteReader();
+            if(reader.HasRows)
             {
-                WindowAdmin a = new WindowAdmin();
-                a.Show();
-                this.Close();
+                reader.Read();
+                controlID = int.Parse(reader["ID"].ToString());
+                if(controlID == 1)
+                {
+                    WindowAdmin a = new WindowAdmin();
+                    a.Show();
+                    this.Close();
+                }
+                else
+                {
+                    MessageBox.Show("Nieprawidłowe dane");
+                    Application.Current.MainWindow.Show();
+                    this.Close();
+
+                }
+
             }
             else
             {

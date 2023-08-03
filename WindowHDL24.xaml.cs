@@ -22,6 +22,8 @@ namespace GHNMiddle
         public WindowHDL24()
         {
             InitializeComponent();
+            //content to be added later
         }
+
     }
 }
