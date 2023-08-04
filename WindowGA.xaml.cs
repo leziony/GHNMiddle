@@ -372,6 +372,7 @@ namespace GHNMiddle
                     w.WriteLine(City.Text);
                     w.WriteLine(Country.Text);
                     w.WriteLine(CountryCode.Text);
+                    w.WriteLine(paymentMethod.SelectedItem.ToString());
                 w.Close();
              
             }

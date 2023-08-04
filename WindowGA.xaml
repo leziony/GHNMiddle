@@ -44,5 +44,10 @@
         <Button x:Name="recoveryButton" Content="Odzyskaj dane" HorizontalAlignment="Left" Margin="398,191,0,0" VerticalAlignment="Top" Width="85" Click="ButtonRecover_Click"/>
         <Button x:Name="exportButton" Content="Exportuj Dane" HorizontalAlignment="Left" Margin="691,198,0,0" VerticalAlignment="Top" Click="ButtonExport_Click"/>
         <Button x:Name="editButton" Content="Zmień taryfe" HorizontalAlignment="Left" Margin="150,191,0,0" VerticalAlignment="Top" Click="editButton_Click"/>
+        <ComboBox x:Name="paymentMethod" HorizontalAlignment="Left" Margin="500,56,0,0" VerticalAlignment="Top" Width="120">
+            <ComboBoxItem Content="Karta" IsSelected="True"/>
+            <ComboBoxItem Content="Przelew" />
+        </ComboBox>
+        <TextBlock HorizontalAlignment="Left" Margin="424,59,0,0" TextWrapping="Wrap" VerticalAlignment="Top"><Run Language="pl-pl" Text="Płatność:"/></TextBlock>
     </Grid>
 </Window>
