@@ -67,8 +67,7 @@ namespace GHNMiddle
 
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
-            //to be removed shortly
-            //wait for more
+            //to be removed shortly(at some point)
         }
     }
 }
