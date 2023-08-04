@@ -46,7 +46,7 @@ namespace GHNMiddle
                     int id = (int)rdr["ID"];
                     wincon.conn.Close();
                     wincon.conn.Open();
-                    sql = "CREATE TABLE IF NOT EXISTS " + UserID.Text + "temp (" +
+                    sql = "CREATE TABLE IF NOT EXISTS " + id.ToString() + "temp (" +
                     "tarrifcode varchar(255)," +
                     "ammount int," +
                     "unit varchar(255)," +
