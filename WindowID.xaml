@@ -6,10 +6,12 @@
         xmlns:local="clr-namespace:GHNMiddle"
         Closing="Window_Closing"
         mc:Ignorable="d"
-        Title="WindowID" Height="200" Width="200">
+        Title="WindowID" Height="250" Width="200">
     <Grid>
         <TextBox x:Name="UserID" HorizontalAlignment="Center" Margin="0,58,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
-        <Button Content="Przejdz" HorizontalAlignment="Center" Margin="0,130,0,0" VerticalAlignment="Top" Click="Button_Click"/>
-        <TextBlock HorizontalAlignment="Center" Margin="0,27,0,0" TextWrapping="Wrap" VerticalAlignment="Top"><Run Language="pl-pl" Text="Podaj swoje ID"/></TextBlock>
+        <Button Content="Przejdz" HorizontalAlignment="Center" Margin="0,177,0,0" VerticalAlignment="Top" Click="Button_Click"/>
+        <TextBlock HorizontalAlignment="Center" Margin="0,27,0,0" TextWrapping="Wrap" VerticalAlignment="Top"><Run Text="Podaj sw"/><Run Text="ój login (Nazwisko"/><Run Language="pl-pl" Text=")"/></TextBlock>
+        <TextBox x:Name="password" HorizontalAlignment="Center" Margin="0,129,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
+        <TextBlock HorizontalAlignment="Left" Margin="72,104,0,0" TextWrapping="Wrap" VerticalAlignment="Top"><Run Language="pl-pl" Text="Podaj hasło"/></TextBlock>
     </Grid>
 </Window>
