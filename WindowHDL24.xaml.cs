@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MySqlConnector;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -19,11 +20,28 @@ namespace GHNMiddle
     /// </summary>
     public partial class WindowHDL24 : Window
     {
-        public WindowHDL24()
+        string id;
+        MainWindow connect = new MainWindow();
+        public WindowHDL24(string id)
         {
             InitializeComponent();
-            //content to be added later
+            this.id = id;
+            MessageBox.Show("Wykryto opłate HDL24, która jest opłatą za usługi specjalne. \n Proszę podać sumę HDL24 ze GHN i wprowadzić ją na następnym ekranie", "Opłata specjalna", MessageBoxButton.OK, MessageBoxImage.Warning);
         }
 
+        private void sendButton_Click(object sender, RoutedEventArgs e)
+        {
+            connect.connectsql("server=localhost;uid=root;pwd=admin;database=ghndata;");
+            connect.conn.Open();
+            decimal costi = decimal.Parse(cost.Text.ToString());
+            string sql = "UPDATE " + id + " SET cost = ?cost WHERE tarrifcode = 'HDL24'";
+            MySqlCommand cmd = new MySqlCommand(sql, connect.conn);
+            cmd.Parameters.Add(new MySqlParameter("cost", costi));
+            cmd.ExecuteNonQuery();
+            connect.conn.Dispose();
+            connect.Close();
+            this.Close();
+
+        }
     }
 }
