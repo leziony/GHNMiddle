@@ -34,7 +34,7 @@ namespace GHNMiddle
             decimal value;
             decimal percentValue;
             decimal currentCost;
-            string sql = "SELECT cost FROM " + wincon.id + " WHERE tarrifcode = ?sel LIMIT 1";
+            string sql = "SELECT cost FROM " + wincon.id + "temp WHERE tarrifcode = ?sel LIMIT 1";
             MySqlCommand cmd = new MySqlCommand(sql,wincon.conn);
             cmd.Parameters.Add(new MySqlParameter("sel", tarrifCode.Text));
             MySqlDataReader read = cmd.ExecuteReader();

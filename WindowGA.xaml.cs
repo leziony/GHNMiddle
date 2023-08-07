@@ -72,7 +72,7 @@ namespace GHNMiddle
         public void SQLupdate()
         {
             windowconnect.conn.Open();
-            string sql = "SELECT * FROM " + windowconnect.id;
+            string sql = "SELECT * FROM " + windowconnect.id +"temp";
             MySqlCommand cmd = new MySqlCommand(sql, windowconnect.conn);
             MySqlDataReader read = cmd.ExecuteReader();
             if(read.HasRows)
@@ -133,7 +133,7 @@ namespace GHNMiddle
         {
             windowconnect.connectsql("server=localhost;uid=root;pwd=admin;database=ghndata;");
             windowconnect.conn.Open();
-            string sql = "DROP TABLE IF EXISTS " + windowconnect.id + ";";
+            string sql = "DROP TABLE IF EXISTS " + windowconnect.id + "temp;";
             MySqlCommand cmd = new MySqlCommand(sql, windowconnect.conn);
             cmd.ExecuteNonQuery();
             sqlReady = false;
@@ -283,7 +283,7 @@ namespace GHNMiddle
                     Tab.Rows.Add(row);
                     windowconnect.conn.Close();
                     windowconnect.conn.Open();
-                    sql = "INSERT INTO " + windowconnect.id + " VALUES (?a,?b,?c,?d);";
+                    sql = "INSERT INTO " + windowconnect.id + "temp VALUES (?a,?b,?c,?d);";
                     cmd = new MySqlCommand(sql,windowconnect.conn);
                     cmd.Parameters.Add(new MySqlParameter("a", noder.ChildNodes[0].InnerText));
                     cmd.Parameters.Add(new MySqlParameter("b", int.Parse(noder.ChildNodes[1].InnerText)));
@@ -349,7 +349,7 @@ namespace GHNMiddle
                 return;
             }
             windowconnect.conn.Open();
-            string sql = "SELECT * FROM " + windowconnect.id;
+            string sql = "SELECT * FROM " + windowconnect.id + "temp";
             MySqlCommand cmd = new MySqlCommand(sql,windowconnect.conn);
             MySqlDataReader reader = cmd.ExecuteReader();
             using (StreamWriter w = new StreamWriter("export.txt"))

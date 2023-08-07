@@ -32,7 +32,7 @@ namespace GHNMiddle
         {
             con.connectsql("server=localhost;uid=root;pwd=admin;database=ghndata;");
             con.conn.Open();
-            string sql = "UPDATE " + id + " SET tarrifcode = ?t2 WHERE tarrifcode = ?t1";
+            string sql = "UPDATE " + id + "temp SET tarrifcode = ?t2 WHERE tarrifcode = ?t1";
             MySqlCommand cmd = new MySqlCommand(sql,con.conn);
             cmd.Parameters.Add(new MySqlParameter("t2",newTarrif.Text));
             cmd.Parameters.Add(new MySqlParameter("t1", oldTarrif.Text));

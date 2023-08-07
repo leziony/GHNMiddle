@@ -55,7 +55,7 @@ namespace GHNMiddle
                     cmd = new MySqlCommand(sql, wincon.conn);
                     cmd.ExecuteNonQuery();
                     wincon.changeId(UserID.Text);
-                    WindowGA Test = new WindowGA(UserID.Text);
+                    WindowGA Test = new WindowGA(id.ToString());
                     Test.Show();
                     complete = true;
                     wincon.conn.Dispose();
