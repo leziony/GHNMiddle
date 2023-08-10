@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.IO;
 using System.Linq;
+using System.Printing;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -181,6 +182,7 @@ namespace GHNMiddle
                 XMLFilePath.Text = ofd.FileName;
                 fileAdded = true;
                 Tab.Rows.Clear();
+                hdlButton.Visibility = Visibility.Hidden;
                 sqlReady = false;
             }
         }
@@ -224,18 +226,20 @@ namespace GHNMiddle
         private void ButtonLoadTarrif_Click(object sender, RoutedEventArgs e)
         {
             Tab.Rows.Clear();
+            sqlReady = false;
+            windowconnect.connectsql("server=localhost;uid=root;pwd=admin;database=ghndata;");
+            windowconnect.conn.Open();
+            string sq = "TRUNCATE TABLE " + windowconnect.id + "temp";
+            MySqlCommand cd = new MySqlCommand(sq,windowconnect.conn);
+            cd.ExecuteNonQuery();
+            windowconnect.conn.Close();
             Cost.Text = "N/A";
             if (fileAdded == false || XMLFilePath.Text == "No XML File")
             {
                 MessageBox.Show("No file was added!", "Error!", MessageBoxButton.OK, MessageBoxImage.Error);
             }
-            else if (sqlReady == true)
-            {
-                SQLupdate();
-            }
             else
             {
-                windowconnect.connectsql("server=localhost;uid=root;pwd=admin;database=ghndata;");
                 String filename = XMLFilePath.Text;
                 try
                 {
@@ -347,6 +351,7 @@ namespace GHNMiddle
                 fileAdded = false;
             }
             XMLFilePath.Text = "Recovered from SQL";
+            hdlButton.Visibility = Visibility.Visible;
             SQLupdate();
         }
 
@@ -415,6 +420,32 @@ namespace GHNMiddle
         {
             WindowMod test = new WindowMod(windowconnect.id);
             test.Show();
+        }
+
+        private void ButtonHDL_Click(object sender, RoutedEventArgs e)
+        {
+            var answer = MessageBox.Show("Czy chcesz sprawdzić obecność HDL24 w systemie?","Pytanie",MessageBoxButton.YesNo,MessageBoxImage.Question);
+            if(answer == MessageBoxResult.Yes)
+            {
+                windowconnect.conn.Open();
+                string sql = "SELECT * FROM " + windowconnect.id + "temp WHERE tarrifcode = 'HDL24' LIMIT 1";
+                MySqlCommand cmd = new MySqlCommand(sql,windowconnect.conn);
+                MySqlDataReader read = cmd.ExecuteReader();
+                if(read.HasRows)
+                {
+                    windowconnect.conn.Close();
+                    WindowHDL24 hdl = new WindowHDL24 (windowconnect.id);
+                    hdl.Show();
+                  
+                }
+                else
+                {
+                    MessageBox.Show("Nie ma HDL24 w tej tabeli");
+                    windowconnect.conn.Close();
+                }
+                hdlButton.Visibility = Visibility.Hidden;
+            }
+
         }
     }           
 }
