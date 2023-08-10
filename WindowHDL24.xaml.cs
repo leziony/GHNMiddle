@@ -34,7 +34,7 @@ namespace GHNMiddle
             connect.connectsql("server=localhost;uid=root;pwd=admin;database=ghndata;");
             connect.conn.Open();
             decimal costi = decimal.Parse(cost.Text.ToString());
-            string sql = "UPDATE " + id + " SET cost = ?cost WHERE tarrifcode = 'HDL24'";
+            string sql = "UPDATE " + id + "temp SET cost = ?cost, ammount = 1 WHERE tarrifcode = 'HDL24'";
             MySqlCommand cmd = new MySqlCommand(sql, connect.conn);
             cmd.Parameters.Add(new MySqlParameter("cost", costi));
             cmd.ExecuteNonQuery();

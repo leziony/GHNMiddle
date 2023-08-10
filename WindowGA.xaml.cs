@@ -29,6 +29,7 @@ namespace GHNMiddle
         bool sqlReady= false;
         bool first_launch = false;
         bool checkup = false;
+        bool hdlspecial = false;
         bool exportblocker= false;
         bool exportComplete = false;
         System.Data.DataTable Tab = new DataTable();
@@ -262,6 +263,10 @@ namespace GHNMiddle
                     XmlNode noder = xmlDoc.SelectSingleNode("/inflot_export_total/services_total_list/services_list/service[" + i.ToString() + "]", nsmgr);
                     row = Tab.NewRow();
                     row["Taryfa"] = noder.ChildNodes[0].InnerText;
+                    if (noder.ChildNodes[0].InnerText == "HDL24")
+                    {
+                        hdlspecial = true;
+                    }
                     int value = int.Parse(noder.ChildNodes[1].InnerText);
                     row["Ilosc"] = value;
                     row["Jednostka"] = noder.ChildNodes[2].InnerText;
@@ -294,6 +299,13 @@ namespace GHNMiddle
                 }
                 sqlReady = true;
                 CostCalc();
+                if (hdlspecial == true)
+                {
+                    WindowHDL24 hdl = new WindowHDL24(windowconnect.id);
+                    hdl.Show();
+                    hdlspecial = false;
+
+                }
             }
         }
         private void ButtonCost_Click(object sender, RoutedEventArgs e)
